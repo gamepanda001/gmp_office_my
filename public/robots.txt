@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+
+# Sitemap
+Sitemap: https://gmp-official-website.dev.pre-release.xyz/sitemap-0.xml

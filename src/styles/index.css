@@ -1,0 +1,81 @@
+@layer reset, base, tokens, recipes, utilities;
+
+@font-face {
+  font-family: 'D-DIN-PRO';
+  src: url('/D-DIN-PRO-Heavy.woff2') format('woff2'),
+    url('/D-DIN-PRO-Heavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN-PRO';
+  src: url('/D-DIN-PRO-ExtraBold.woff2') format('woff2'),
+    url('/D-DIN-PRO-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN-PRO';
+  src: url('/D-DIN-PRO-Regular.woff2') format('woff2'),
+    url('/D-DIN-PRO-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN-PRO';
+  src: url('/D-DIN-PRO-Medium.woff2') format('woff2'),
+    url('/D-DIN-PRO-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'D-DIN-PRO', sans-serif;
+}
+
+*[aria-label='swiper-pagination'] {
+  --swiper-pagination-bottom: -32px;
+  --swiper-pagination-color: #F74774;
+  --swiper-pagination-bullet-inactive-color: #CECECE;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  text-align: center;
+}
+
+/* 全屏样式优化 - 基础样式 */
+:fullscreen {
+  background-color: #000 !important;
+}
+
+/* 兼容性前缀 */
+:-webkit-full-screen {
+  background-color: #000 !important;
+}
+
+:-moz-full-screen {
+  background-color: #000 !important;
+}
+
+:-ms-fullscreen {
+  background-color: #000 !important;
+}
+
+/* 全屏中的iframe优化 */
+:fullscreen iframe,
+:-webkit-full-screen iframe,
+:-moz-full-screen iframe,
+:-ms-fullscreen iframe {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  object-fit: contain;
+  border: none;
+  background-color: transparent;
+}

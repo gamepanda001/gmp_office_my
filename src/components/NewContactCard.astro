@@ -1,0 +1,63 @@
+---
+import { css } from "../../styled-system/css";
+import { stack } from "../../styled-system/patterns";
+import ContactForm from "../components/ContactForm";
+import ShowContact from "../components/ShowContact";
+
+const containerSxs = [
+  stack({
+    direction: {
+      md: "row",
+      base: "column",
+    },
+    gap: {
+      md: "48px",
+      base:"20px"
+    },  
+    flexWrap: "wrap",
+  }),
+  css({
+    borderRadius: "24px",
+    border: "1px solid #EFEFEF",
+    bgColor: "#FFFFFF",
+    minHeight: {
+      md: "470px",
+      base: "auto",
+    },
+
+    padding: {
+      md: "40px",
+      base:"32px 16px"
+    }
+  }),
+];
+---
+
+<div class:list={containerSxs}>
+  <div
+    class={css({
+      flex: "1",
+      maxWidth: "584px",
+      order: {
+        md: "1",
+        base: "2",
+      },
+      display: "flex",
+      flexDirection: "column",
+    })}
+  >
+    <ContactForm client:idle />
+  </div>
+  <div
+    class={css({
+      flex: "1",
+      maxWidth: "488px",
+      order: {
+        md: "2",
+        base: "1",
+      },
+    })}
+  >
+    <ShowContact client:idle />
+  </div>
+</div> 

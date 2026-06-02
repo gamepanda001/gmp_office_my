@@ -1,0 +1,214 @@
+---
+import seoConfig from "../config/seo.json";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  type?: string;
+  pagePath?: string;
+  gameData?: {
+    name?: string;
+    title?: string;
+    desc?: string;
+    category?: string;
+    features?: string[];
+    rtp?: number;
+    maxodd?: string;
+    volatility?: string;
+    releaseDate?: number;
+    cover?: ImageMetadata;
+    shareImage?: string;
+  };
+}
+
+const { title, description, keywords, image, type = "website", pagePath = "", gameData } = Astro.props;
+
+// 获取全局SEO配置
+const { globalConfig } = seoConfig;
+
+// 确定最终使用的SEO数据
+const finalTitle = title || globalConfig.defaultTitle;
+const finalDescription = description || globalConfig.defaultDescription;
+const finalKeywords = keywords || globalConfig.defaultKeywords;
+
+// 图片优先级：自定义image > gameData.shareImage > gameData.cover > 默认图片
+let finalImage = globalConfig.defaultImage;
+if (image) {
+  finalImage = image;
+} else if (gameData?.shareImage) {
+  finalImage = gameData.shareImage.startsWith('http') 
+    ? gameData.shareImage 
+    : new URL(gameData.shareImage, globalConfig.siteUrl).toString();
+} else if (gameData?.cover?.src) {
+  finalImage = new URL(gameData.cover.src, globalConfig.siteUrl).toString();
+}
+// 确保 pagePath 格式正确，避免重复斜杠
+const formattedPath = pagePath.startsWith("/") ? pagePath.substring(1) : pagePath;
+const canonicalURL = new URL(formattedPath, globalConfig.siteUrl).toString();
+
+// 处理游戏详情页的特殊情况
+let processedTitle = finalTitle;
+let processedDescription = finalDescription;
+let processedKeywords = finalKeywords;
+
+if (gameData) {
+  const { gameDetail } = seoConfig.pages;
+
+  // 替换模板中的变量
+  if (gameData.title && gameDetail.titleTemplate) {
+    processedTitle = gameDetail.titleTemplate.replace("{gameName}", gameData.title);
+  }
+
+  if (gameData.desc && gameDetail.descriptionTemplate) {
+    processedDescription = gameDetail.descriptionTemplate
+      .replace("{gameName}", gameData.title || "")
+      .replace("{gameCategory}", gameData.category || "")
+      .replace("{gameDescription}", gameData.desc || "");
+  }
+
+  if (gameData.features && gameDetail.keywordsTemplate) {
+    const featuresStr = Array.isArray(gameData.features) ? gameData.features.join(", ") : "";
+
+    processedKeywords = gameDetail.keywordsTemplate
+      .replace("{gameName}", gameData.title || "")
+      .replace("{gameCategory}", gameData.category || "")
+      .replace("{gameFeatures}", featuresStr);
+  }
+}
+
+let structuredData = null;
+if (gameData) {
+  const webPageSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: processedTitle,
+    description: processedDescription,
+    url: canonicalURL,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: globalConfig.siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Games",
+          item: `${globalConfig.siteUrl}/games`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: gameData.title,
+          item: canonicalURL,
+        },
+      ],
+    },
+    mainEntity: {
+      "@type": "SoftwareApplication",
+      name: gameData.title,
+      description: gameData.desc,
+      applicationCategory: "GameApplication",
+      operatingSystem: "Web",
+      image: gameData.shareImage 
+        ? (gameData.shareImage.startsWith('http') 
+           ? gameData.shareImage 
+           : new URL(gameData.shareImage, globalConfig.siteUrl).toString())
+        : gameData.cover?.src 
+        ? new URL(gameData.cover.src, globalConfig.siteUrl).toString() 
+        : undefined,
+      offers: {
+        "@type": "Offer",
+        price: 0,
+        priceCurrency: "USD",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: gameData.rtp ? gameData.rtp * 5 : 4.5,
+        ratingCount: 100,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: globalConfig.siteName,
+        url: globalConfig.siteUrl,
+      },
+    },
+  };
+
+  if (gameData.rtp) {
+    webPageSchema.mainEntity.additionalProperty = [
+      {
+        "@type": "PropertyValue",
+        name: "RTP",
+        value: `${gameData.rtp * 100}%`,
+      },
+    ];
+  }
+
+  if (gameData.maxodd) {
+    if (!webPageSchema.mainEntity.additionalProperty) {
+      webPageSchema.mainEntity.additionalProperty = [];
+    }
+    webPageSchema.mainEntity.additionalProperty.push({
+      "@type": "PropertyValue",
+      name: "Max Multiplier",
+      value: gameData.maxodd,
+    });
+  }
+
+  if (gameData.volatility) {
+    if (!webPageSchema.mainEntity.additionalProperty) {
+      webPageSchema.mainEntity.additionalProperty = [];
+    }
+    webPageSchema.mainEntity.additionalProperty.push({
+      "@type": "PropertyValue",
+      name: "Volatility",
+      value: gameData.volatility,
+    });
+  }
+
+  structuredData = JSON.stringify(webPageSchema);
+}
+---
+
+<!-- 基本元数据 -->
+<title>{processedTitle}</title>
+<meta name="description" content={processedDescription} />
+<meta name="keywords" content={processedKeywords} />
+
+<!-- 规范链接 -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={processedTitle} />
+<meta property="og:description" content={processedDescription} />
+<meta
+  property="og:image"
+  content={new URL(finalImage.startsWith("/") ? finalImage.substring(1) : finalImage, globalConfig.siteUrl).toString()}
+/>
+<meta property="og:site_name" content={globalConfig.siteName} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content={globalConfig.twitterCardType} />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={processedTitle} />
+<meta property="twitter:description" content={processedDescription} />
+<meta
+  property="twitter:image"
+  content={new URL(finalImage.startsWith("/") ? finalImage.substring(1) : finalImage, globalConfig.siteUrl).toString()}
+/>
+{globalConfig.twitterHandle && <meta property="twitter:site" content={globalConfig.twitterHandle} />}
+
+<!-- 其他元数据 -->
+<meta name="theme-color" content={globalConfig.themeColor} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- JSON-LD Structured Data -->
+{structuredData && <script type="application/ld+json" is:inline set:html={structuredData} />}

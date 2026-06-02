@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import { css, cx } from "../../styled-system/css";
+import { stack } from "../../styled-system/patterns";
+import contactPicturePng from "../assets/contact-picture.png";
+import tgContact1 from "../assets/tg-contact-1.png";
+import tgContact2 from "../assets/tg-contact-2.png";
+import emailIcon from "../assets/email.svg";
+import phoneIcon from "../assets/phone.svg";
+
+const containerSxs = [
+  stack({
+    direction: "row",
+    gap: "0",
+    flexWrap: "wrap",
+  }),
+  css({
+    borderRadius: "24px",
+    border: "1px solid #EFEFEF",
+    bgColor: "#FFFFFF",
+    height: {
+      md: "361px",
+      base: "auto",
+    },
+  }),
+];
+
+const paragraphSx = css({ textStyle: "16_400_100", color: "#6D7A7D", marginBottom: "24px", justifyContent: "center" });
+
+const linkSx = css({ textStyle: "20_900_140", color: "#01B6CF" });
+
+const pictureSx = css({
+  flexShrink: 0,
+  objectFit: "contain",
+  objectPosition: "bottom",
+  marginLeft: { base: "auto", md: "24px" },
+  marginRight: { base: "auto", md: "0px" },
+  marginTop: { base: "24px", md: "20px" },
+  marginBottom: { base: "0", md: "-64px" },
+  width: { base: "219px", md: "336px" },
+  height: { base: "269px", md: "339px" },
+});
+---
+
+<div class:list={containerSxs}>
+  <div
+    class={css({
+      flex: "1",
+      maxWidth: "487px",
+      marginTop: { base: "24px", md: "48px" },
+      px: { base: "12px", md: "0px" },
+      textAlign: { base: "center", md: "left" },
+      marginLeft: { base: "auto", md: "176px" },
+    })}
+  >
+    <p class={paragraphSx}>
+      Please send a message to the email address below or contact us through TG. We look forward to exploring unlimited
+      possibilities with you.
+    </p>
+    <div
+      class={css({
+        display: "flex",
+        gap: "20px",
+        marginBottom: "20px",
+        ml: { base: "auto", md: "-8px" },
+        justifyContent: { base: "center", md: "flex-start" },
+      })}
+    >
+      <Image src={tgContact1} alt="Telegram contact QR code 1" width={128} height={128} quality={100} />
+      <Image src={tgContact2} alt="Telegram contact QR code 2" width={128} height={128} quality={100} />
+    </div>
+    <div
+      class={css({
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        justifyContent: { base: "center", md: "flex-start" },
+      })}
+    >
+      <div class={css({ display: "flex", gap: "12px", justifyContent: { base: "center", md: "flex-start" } })}>
+        <Image src={emailIcon} alt="Email icon" width={20} height={20} />
+        <a class={linkSx} href="mailto:contact@gaming-panda.com">Contact@Gaming-Panda.Com</a>
+      </div>
+      <div class={css({ display: "flex", gap: "12px", justifyContent: { base: "center", md: "flex-start" } })}>
+        <Image src={phoneIcon} alt="Phone icon" width={20} height={20} />
+        <a class={linkSx} href="tel:+84936094170">+84 936 094 170</a>
+      </div>
+    </div>
+  </div>
+  <Image class={pictureSx} src={contactPicturePng} alt="Contact section illustration" quality={100} />
+</div>

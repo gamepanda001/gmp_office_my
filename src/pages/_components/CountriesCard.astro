@@ -1,0 +1,40 @@
+---
+import { css } from "../../../styled-system/css";
+import { hstack, wrap } from "../../../styled-system/patterns";
+import NumberHeading from "./NumberHeading.astro";
+import PieLabel from "./PieLabel.astro";
+import { Image } from "astro:assets";
+import piePng from "../../assets/pie.png";
+
+const data = [
+  { color: "#EC506E", text: "Asia", number: 42 },
+  { color: "#E6A437", text: "Europe", number: 30 },
+  { color: "#A33CE2", text: "America", number: 12 },
+  { color: "#7BB3FB", text: "Africa", number: 10 },
+];
+
+interface Props {
+  className?: string;
+  slot?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class:list={[css({ pt: { base: "16px", md: "32px" }, pb: "40px", px: { base: "24px", md: "32px" } }), className]}>
+  <div class:list={[hstack({ justifyContent: "space-between" }), css({ mb: { base: "24px", md: "56px" } })]}>
+    <NumberHeading number={103} hasPlus text="Customers In 103 Countries" className={css({ flex: "0 1 116px" })} />
+    <div class={css({ flex: "0 0", flexBasis: { base: "114px", md: "146px" }, mr: "9px", mt: { base: "-1px", md: "-11px" } })}>
+      <Image src={piePng} alt="Countries distribution pie chart" class={css({ width: "100%", height: "auto" })} />
+    </div>
+  </div>
+  <div class:list={[wrap({ columnGap: "48px", rowGap: "32px" })]}>
+    {
+      data.map((item) => (
+        <div class={css({ flex: "1 0 160px" })}>
+          <PieLabel color={item.color} text={item.text} number={item.number} />
+        </div>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,31 @@
+---
+// export const prerender = true;
+
+import { css } from "../../../styled-system/css";
+import Carousel from "./_components/Carousel";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GamesTabs from "./_components/GamesTabs";
+import { sectionContainerSx } from "../../styles/common";
+import NewContactCard from "../../components/NewContactCard.astro";
+---
+
+<style>
+  .grid-container.expand {
+    max-height: 5000px;
+  }
+</style>
+<BaseLayout
+  title="Play Slots, Scratch/Lottery Games | Gaming Panda "
+  description="Discover top-quality slot, scratch/lottery by Gaming Panda — featuring stunning visuals, fast gameplay, and full integration support."
+  keywords="super ace, mines, color game, slot games, scratch games, go bananas, Gaming Panda games, online gaming, lottery games, fast skill games"
+  pagePath="/games"
+>
+  <section id="hero-section">
+    <Carousel client:load />
+  </section>
+  <GamesTabs client:idle />
+
+  <section class={css(sectionContainerSx, { py: { base: "24px", lg: "40px" } })} id="contact">
+    <NewContactCard/>
+  </section>
+</BaseLayout>

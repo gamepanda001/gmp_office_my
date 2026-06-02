@@ -1,0 +1,47 @@
+[
+  {
+    "id": "US",
+    "name": "English",
+    "icon": "https://static.lucky-mines.com/US_1749109352944.png"
+  },
+  {
+    "id": "KR",
+    "name": "Korean",
+    "icon": "https://static.lucky-mines.com/KR_1749109352943.png"
+  },
+  {
+    "id": "RU",
+    "name": "Russian",
+    "icon": "https://static.lucky-mines.com/RU_1749109352944.png"
+  },
+  {
+    "id": "TR",
+    "name": "Turkish",
+    "icon": "https://static.lucky-mines.com/TR_1749109352944.png"
+  },
+  {
+    "id": "IN",
+    "name": "Hindi",
+    "icon": "https://static.lucky-mines.com/IN_1749109352943.png"
+  },
+  {
+    "id": "AE",
+    "name": "Arabic",
+    "icon": "https://static.lucky-mines.com/AE_1749109352942.png"
+  },
+  {
+    "id": "JP",
+    "name": "Japanese",
+    "icon": "https://static.lucky-mines.com/JP_1749109352943.png"
+  },
+  {
+    "id": "TH",
+    "name": "Thai",
+    "icon": "https://static.lucky-mines.com/TH_1749109352944.png"
+  },
+  {
+    "id": "BR",
+    "name": "Portuguese",
+    "icon": "https://static.lucky-mines.com/BR_1749109352943.png"
+  }
+]

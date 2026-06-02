@@ -1,0 +1,32 @@
+---
+import NumberHeading from "./NumberHeading.astro";
+import CoinCarouselWrapper from "../../components/CoinCarouselWrapper";
+import { stack } from "../../../styled-system/patterns";
+import { css } from "../../../styled-system/css";
+import currencies from "../../contents/currency.json";
+
+const currencyCount = currencies.length;
+---
+
+<div
+  class:list={[
+    stack({ direction: { base: "column", md: "row" }, alignItems: { base: "flex-start", md: "flex-end" }, flexWrap: "wrap" }),
+    css({ pt: { base: "16px", md: "32px" }, pb: "32px", position: "relative" }),
+  ]}
+>
+  <NumberHeading
+    number={currencyCount}
+    hasPlus
+    text="Currency supported"
+    className={css({
+      flex: "0 0",
+      flexBasis: { base: "auto", md: "40px" },
+      pl: { base: "24px", md: "32px" },
+      pr: { base: "24px", md: "16px" },
+      mb: { base: "20px", md: "0px" },
+    })}
+  />
+  <div class={css({ flexShrink: "0", flexBasis: "65%", ml: "auto", mr: { base: "auto", md: "0" } })}>
+    <CoinCarouselWrapper client:load />
+  </div>
+</div>

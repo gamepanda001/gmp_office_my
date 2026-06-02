@@ -1,0 +1,47 @@
+---
+import { css } from "../../../styled-system/css";
+import headingDecorationPng from "../../assets/heading-decoration.png";
+
+interface Props {
+  className?: string;
+  heading: string;
+  subheading: string;
+  subSectionTitle?: string;
+}
+
+const { className, heading, subheading, subSectionTitle } = Astro.props;
+---
+
+<header class:list={[css({ textAlign: "center", pt: { base: "32px", md: "56px" } }), className]}>
+  <h2
+    class={css({
+      textStyle: { base: "38_800_100", md: "64_800_100" },
+      pt: { base: "10px", md: "16px" },
+      background: "no-repeat center top",
+      backgroundSize: { base: "auto 10px", md: "auto 16px" },
+    })}
+    style={{ backgroundImage: `url(${headingDecorationPng.src})` }}
+  >
+    {heading}
+  </h2>
+  
+  {subSectionTitle && (
+    <h3 class={css({ position: "absolute", top: "0", left: "0", opacity: "0", height: "1px", overflow: "hidden", width: "1px" })}>
+      {subSectionTitle}
+    </h3>
+  )}
+  
+  <div
+    class:list={[
+      css({
+        textStyle: { base: "14_500_142", md: "16_500_100" },
+        color: "#6D7A7D",
+        mt: { base: "18px", md: "32px" },
+        maxWidth: "91.46%",
+        mx: "auto",
+      }),
+    ]}
+  >
+    {subheading}
+  </div>
+</header>

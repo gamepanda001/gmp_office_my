@@ -1,0 +1,59 @@
+{
+  "name": "gmp-office-website",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "node ./scripts/update-site-config.js  && astro dev",
+    "start": "node ./scripts/update-site-config.js && astro dev",
+    "build": "node ./scripts/update-site-config.js && astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-games": "node ./scripts/sync-games.cjs",
+    "sync-currency": "node ./scripts/sync-currency.cjs",
+    "sync-language": "node ./scripts/sync-language.cjs",
+    "generate-og": "node ./scripts/generate-og-images.cjs",
+    "update-site-config": "node ./scripts/update-site-config.js",
+    "compress-image": "node ./scripts/compress-image.js",
+
+    "build:vercel": "node ./scripts/update-site-config.js && astro check && astro build"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.4",
+    "@astrojs/react": "^3.0.10",
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/vercel": "^8.2.7",
+    "@hookform/resolvers": "^3.3.2",
+    "@nanostores/react": "^0.7.2",
+    "@types/cors": "^2.8.19",
+    "@types/lodash-es": "^4.17.12",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "astro": "^5.13.5",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
+    "fscreen": "^1.2.0",
+    "lodash-es": "^4.17.21",
+    "nanostores": "^0.10.0",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.2",
+    "react-tabs": "^6.0.2",
+    "sharp": "^0.33.4",
+    "swiper": "^11.0.6",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.31.0",
+    "@types/fscreen": "^1.0.4",
+    "canvas": "^2.11.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.5.0"
+  }
+}

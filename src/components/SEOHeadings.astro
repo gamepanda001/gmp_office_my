@@ -1,0 +1,39 @@
+---
+import { css } from "../../styled-system/css";
+
+export interface Props {
+  tag: "h2" | "h3";
+  text: string;
+  className?: string;
+  textStyle?: any;
+}
+
+const { tag, text, className, textStyle } = Astro.props;
+
+const defaultH2Style = {
+  textStyle: { base: "28_700_100", md: "36_700_100" },
+  mb: { base: "16px", md: "24px" },
+};
+
+const defaultH3Style = {
+  textStyle: { base: "20_700_100", md: "24_700_100" },
+  mb: { base: "12px", md: "16px" },
+};
+
+const headingStyle = tag === "h2" ? defaultH2Style : defaultH3Style;
+const finalStyle = textStyle || headingStyle;
+---
+
+{
+  tag === "h2" ? (
+    <h2 class:list={[css(finalStyle), className]}>
+      {text}
+      <slot />
+    </h2>
+  ) : (
+    <h3 class:list={[css(finalStyle), className]}>
+      {text}
+      <slot />
+    </h3>
+  )
+}

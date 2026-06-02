@@ -1,0 +1,97 @@
+---
+import { css } from "../../../styled-system/css";
+import NumberHeading from "./NumberHeading.astro";
+import { grid } from "../../../styled-system/patterns";
+import { gamesForGrid } from "../../contents/games";
+import gamesData from "../../contents/games.json";
+import { Image } from "astro:assets";
+---
+
+<style>
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(0.75);
+      opacity: 0.85;
+    }
+    30% {
+      transform: scale(0.75);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+</style>
+
+<div class={css({ position: "relative", py: { base: "16px", md: "32px" }, px: { base: "24px", md: "32px" } })}>
+  <svg
+    class={css({ position: "absolute", top: "0", right: "0" })}
+    xmlns="http://www.w3.org/2000/svg"
+    width="157"
+    height="148"
+    viewBox="0 0 157 148"
+    fill="none"
+  >
+    <path
+      opacity="0.2"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M167.393 -64.2549C167.393 -64.2549 98.0125 -126.195 33.4925 3.82512C-31.0275 133.845 12.6725 148.445 40.3025 147.935C71.5825 147.355 99.5025 99.3651 145.833 74.1751C189.883 50.2251 225.183 -21.5449 167.393 -64.2549Z"
+      fill="#86DEF0"></path>
+  </svg>
+  <NumberHeading hasPlus number={gamesData.length||30} text="Games" className={css({ mb: { base: "24px", md: "48px" } })} />
+  <div
+    id="game-grid"
+    class:list={[
+      grid({
+        gridTemplateColumns: "repeat(4,  1fr)",
+        gridTemplateRows: "repeat(3,  1fr)",
+        gap: { base: "16px", md: "24px" },
+      }),
+    ]}
+  >
+    {
+      gamesForGrid.map((icon, index) => {
+        return <img
+          src={icon}
+          alt={`Game icon ${index + 1}`}
+          class={css({ borderRadius: "8px", animation: "2s ease-in-out", width: { base: "50px", md: "64px" }, mx: "auto" })}
+          style={{ animationDelay: `${index * 100}ms` }}
+          width={64}
+          height={64}
+        />
+      })
+    }
+  </div>
+
+  <p
+    class:list={css({
+      textStyle: "16_600_100",
+      color: "#6D7A7D",
+      mt: { base: "24px", md: "40px" },
+    })}
+  >
+    Stay tuned for more games
+  </p>
+</div>
+
+<script>
+  const gameGridElem = document.getElementById("game-grid");
+  let hasShowed = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!hasShowed && entry.isIntersecting) {
+        hasShowed = true;
+        gameGridElem?.querySelectorAll("img")?.forEach((image) => {
+          image.style.animationName = "scale";
+        });
+      }
+    });
+  });
+  if (gameGridElem) {
+    observer.observe(gameGridElem);
+  }
+</script>

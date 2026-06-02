@@ -1,0 +1,19 @@
+---
+import { css } from "../../../styled-system/css";
+import { hstack, circle } from "../../../styled-system/patterns";
+
+interface Props {
+  className?: string;
+  color: string;
+  text: string;
+  number: number;
+}
+const { className, color, text, number } = Astro.props;
+
+---
+
+<div class:list={[className, hstack(), css({ textStyle: '16_600_100', color: "#000000" })]}>
+  <span class:list={[circle({ size: "16px", bg: color }), css({ flex: "0 0 16px" })]} style={{ backgroundColor: color }}></span>
+  <span>{text}</span>
+  <span class={css({ flex: "1", textAlign: "right" })}>{`${number}%`}</span>
+</div>

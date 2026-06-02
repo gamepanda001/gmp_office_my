@@ -1,0 +1,19 @@
+---
+import { css } from "../../../styled-system/css";
+import { Image } from "astro:assets";
+import logoSvg from "../../assets/logo.svg";
+
+
+interface Props {
+  className?: string;
+  slot?: string;
+}
+
+const { className, slot } = Astro.props
+---
+
+<div class:list={[css({ padding: "24px" }), className]}>
+  <div class={css({ textStyle: '20_700_100', marginBottom: "20px" })}>BRAND IDENTITY</div>
+  <Image class={css({ height: "40px", marginBottom: "12px" })} src={logoSvg} alt="Gaming Panda logo" height={40} quality={100} />
+  <p class={css({ textStyle: '12_700_100', color: "#6D7A7D" })}>©2022 Gaming Panda. All rights reserved</p>
+</div>

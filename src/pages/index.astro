@@ -1,0 +1,422 @@
+---
+import { css, cx } from "../../styled-system/css";
+
+import partners1Png from "../assets/partners-1.png";
+import partners2Png from "../assets/partners-2.png";
+
+import { vstack, wrap } from "../../styled-system/patterns";
+import circleRightSvg from "../assets/circle-right.svg";
+
+import headingGamingSvg from "../assets/heading-gaming.svg";
+import headingNotStopSvg from "../assets/heading-not-stop.svg";
+import rightWithRingSvg from "../assets/right-with-ring.svg";
+import homeHeroPng from "../assets/home-hero.png";
+import homeHeroGoldPng from "../assets/home-hero-gold.png";
+import homeHeroMobilePng from "../assets/home-hero-mobile.png";
+import homeHeroFrontPng from "../assets/home-hero-front.png";
+import backgroundHeaderMp4 from "../assets/background_header.mp4";
+import earthPng from "../assets/earth.png";
+import Contact from "../components/ContactCard.astro";
+import GameCoverCarousel from "./_components/GameCoverCarousel";
+import { Image } from "astro:assets";
+import GamesCard from "./_components/GamesCard.astro";
+import SectionHeader from "./_components/SectionHeader.astro";
+import CountriesCard from "./_components/CountriesCard.astro";
+import CoinsCard from "./_components/CoinsCard.astro";
+import LanguageCard from "./_components/LanguageCard.astro";
+import LicensesCard from "./_components/LicensesCard.astro";
+import AccountManaSupportCard from "./_components/AccountManaSupportCard.astro";
+import OurSeriveCardSwiper from "./_components/OurSeriveCardSwiper";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { NavProps } from "../layouts/types";
+import { button } from "../styles/recipes";
+import { sectionContainerSx, cardSx } from "../styles/common";
+import ExpoDialog from "../components/ExpoDialog";
+import NewContactCard from "../components/NewContactCard.astro";
+import VideoButton from "../components/VideoButton";
+
+import { EventsMarquee } from "./_components/EventsMarquee";
+
+const navItems: NavProps[] = [
+  {
+    label: "Home",
+    href: "#hero-section",
+    type: "anchor",
+  },
+  {
+    label: "Games",
+    href: "#games",
+    type: "anchor",
+  },
+  {
+    label: "Service",
+    href: "#service",
+    type: "anchor",
+  },
+  {
+    label: "Partners",
+    href: "#partners",
+    type: "anchor",
+  },
+  {
+    label: "Events",
+    href: "#events",
+    type: "anchor",
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+    type: "anchor",
+  },
+];
+
+const partnersData = [
+  {
+    className: "scroll-row-to-right",
+    img: partners1Png,
+  },
+  {
+    className: "scroll-row-to-left",
+    img: partners2Png,
+  },
+];
+---
+
+<style>
+  @keyframes scroll-to-right {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-to-left {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .scroll-row-to-right {
+    transform: translateX(0px);
+    animation: scroll-to-right 32s linear infinite;
+  }
+
+  .scroll-row-to-left {
+    margin-left: 100%;
+    transform: translateX(-100%);
+    animation: scroll-to-left 40s linear infinite;
+  }
+</style>
+
+<BaseLayout
+  navItems={navItems}
+  title="Gaming Panda – Access to Slot, Scratch & Other High-Quality Games"
+  description="Gaming Panda offers quality slot, scratch with full integration and customization. Play popular titles like Go Bananas, Super Ace, and ColorGame!"
+  keywords="super ace, mines, color game, slot games, scratch games, go bananas, Gaming Panda games, online gaming, lottery games, fast skill games"
+  pagePath="/"
+>
+  <ExpoDialog client:only="react" />
+  <section class={css({ marginBottom: "8px" })} id="hero-section">
+    <div class={css({ position: "relative", hideFrom: "md" })}>
+      <Image
+        class={css({ width: "100%" })}
+        src={homeHeroMobilePng}
+        alt="Gaming Panda Hero Image"
+        quality={100}
+        loading="eager"
+      />
+      <a
+        class:list={[
+          button({ size: "homeCta", color: "secondary" }),
+          css({ position: "absolute", left: "0", right: "0", mx: "auto", top: "80%" }),
+        ]}
+        href="/#contact"
+      >
+        <span>Contact Us</span>
+        <Image src={circleRightSvg} alt="Right arrow icon" width={32} height={32} />
+      </a>
+    </div>
+
+    <div class={css({ h: "777px", w: "full", position: "relative", hideBelow: "md" })}>
+      <div
+        class={css({
+          w: "full",
+          h: "full",
+          bgColor: "#81D3E5",
+          position: "relative",
+          overflow: "hidden",
+        })}
+        style={{ clipPath: `ellipse(2000px 1180px at 50% -403px)` }}
+      >
+        <Image
+          width={1920}
+          height={777}
+          src={homeHeroPng}
+          alt="Gaming Panda hero background"
+          loading="eager"
+          class={css({
+            position: "absolute",
+            left: "50%",
+            w: "100%",
+            minW: "1920px",
+            objectFit: "cover",
+            h: "777px",
+            maxW: "none",
+            transform: "translateX(-50%)",
+          })}
+        />
+
+        <!-- <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class={css({
+            position: "absolute",
+            left: "50%",
+            w: "100%",
+            minW: "1920px",
+            objectFit: "cover",
+            h: "777px",
+            maxW: "none",
+            transform: "translateX(-50%)",
+          })}
+        >
+          <source src={backgroundHeaderMp4} type="video/mp4" />
+        </video> -->
+        <div
+          class={css({
+            position: "absolute",
+            left: "50%",
+            bottom: "0",
+            w: "1330px",
+            h: "660px",
+            transform: "translateX(-50%)",
+          })}
+        >
+          <Image
+            src={headingNotStopSvg}
+            alt="Not Stop text image"
+            class={css({ position: "absolute", top: "100px", left: "4", animation: "slideInLeft 0.5s ease" })}
+            loading="eager"
+          />
+          <Image
+            src={homeHeroFrontPng}
+            alt="Gaming Panda hero character"
+            class={css({ position: "absolute", bottom: "0", right: "0", animation: "slideInRight 0.5s ease" })}
+            loading="eager"
+            quality={100}
+          />
+          <Image
+            src={headingGamingSvg}
+            alt="Gaming text image"
+            loading="eager"
+            class={css({
+              position: "absolute",
+              top: "256px",
+              left: "0",
+              animation: "slideInLeft 0.5s ease",
+              filter: "drop-shadow(8px 4px 18px rgba(0, 0, 0, 0.1))",
+            })}
+          />
+          <h1
+            class={css({
+              position: "absolute",
+              top: "0",
+              left: "0",
+              opacity: "0",
+              height: "1px",
+              overflow: "hidden",
+              width: "1px",
+            })}
+          >
+            Gaming Panda - High-Quality Gaming Development Studio
+          </h1>
+          <a
+            class:list={[
+              css({ position: "absolute", left: "0", top: "446px" }),
+              button({ size: "homeCta", color: "secondary" }),
+              css({ opacity: 0, animation: "fadeIn 0.5s 0.5s forwards" }),
+            ]}
+            href="/#contact"
+          >
+            <span>Contact Us</span>
+            <Image src={circleRightSvg} alt="Right arrow icon" width={40} height={40} />
+          </a>
+        </div>
+      </div>
+      <Image
+        src={homeHeroGoldPng}
+        alt="Gold coin decoration"
+        loading="eager"
+        width={745}
+        quality={100}
+        class={css({
+          position: "absolute",
+          left: "42%",
+          // transform: "translateX(-50%)",
+          bottom: "-8",
+          maxWidth: "none",
+        })}
+      />
+    </div>
+  </section>
+
+  <section id="games" class={css({ pb: { base: "24px", md: "48px" }, mt: { base: "-48px", md: "0" } })}>
+    <SectionHeader
+      heading="GAMES"
+      subheading="We deliver high-quality slot, scratch with stunning visuals and rewarding gameplay—designed to engage global players."
+      subSectionTitle="Featured Games"
+    />
+    <div class={css({ textAlign: "center", marginTop: "24px", marginBottom: { base: "4px", md: "16px" } })}>
+      <a class:list={["group", css({ textStyle: "24_700_100", color: "#01B6CF" })]} href="/games">
+        <span>All Games</span>
+        <Image
+          class={css({
+            display: "inline",
+            transition: "transform 0.3s",
+            ml: "2",
+            _groupHover: { transform: "translateX(6px)" },
+          })}
+          src={rightWithRingSvg}
+          alt="View all games arrow icon"
+          width={24}
+          height={24}
+        />
+      </a>
+    </div>
+    <GameCoverCarousel client:only="react" />
+  </section>
+
+  <section class={css({ bgColor: "#FAFAFA", pb: "56px", position: "relative" })} id="service">
+    <div
+      class={css({
+        hideBelow: "md",
+        position: "absolute",
+        right: "0",
+        bottom: "-107px",
+        width: "658px",
+        height: "658px",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right -102px center",
+        backgroundSize: "100%",
+      })}
+      style={`background-image: url(${earthPng.src})`}
+    >
+    </div>
+    <div class={css(sectionContainerSx, { px: "0" })}>
+      <SectionHeader
+        heading="OUR SERVICE"
+        subheading="Gaming Panda is a game studio focused on fast-paced, skill-based games with fullsupport for integration and customization for partners."
+      />
+      <div class={css({ hideFrom: "md", mt: "20px" })}>
+        <OurSeriveCardSwiper client:load>
+          <GamesCard slot="gameCard" />
+          <CountriesCard slot="countriesCard" />
+          <CoinsCard slot="coinsCard" />
+          <LanguageCard slot="currenciesCard" />
+          <LicensesCard slot="licensesCard" />
+          <AccountManaSupportCard slot="accountManaSupportCard" />
+        </OurSeriveCardSwiper>
+      </div>
+      <div class={css(wrap.raw({ gap: "32px", alignItems: "stretch" }), { mt: "40px", mb: "24px", hideBelow: "md" })}>
+        <div class={css({ flex: "1 0 392px" })}>
+          <div class={css(cardSx, { height: "100%" })}>
+            <GamesCard />
+          </div>
+        </div>
+
+        <div
+          class={css(vstack.raw({ alignItems: "stretch", justifyContent: "space-between", gap: "32px" }), {
+            flex: "0 0 434px",
+          })}
+        >
+          <div class={css(cardSx)}>
+            <CountriesCard />
+          </div>
+          <div class={css(cardSx)}>
+            <CoinsCard />
+          </div>
+        </div>
+
+        <div
+          class={css(vstack.raw({ alignItems: "stretch", justify: "space-between", gap: "32px" }), {
+            flex: "0 0 310px",
+          })}
+        >
+          <div class={css(cardSx, { flex: 1 })}>
+            <LanguageCard />
+          </div>
+          <div class={css(cardSx)}>
+            <LicensesCard />
+          </div>
+        </div>
+
+        <div class={css(cardSx, { flex: "1 1 100%", hideBelow: "md" })}>
+          <AccountManaSupportCard />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners">
+    <SectionHeader
+      heading="PARTNERS"
+      subheading="Gaming Panda teams up with professional partners to provide gamers with exciting, exhilarating, and highly anticipated games."
+      subSectionTitle="Our Gaming Partners"
+    />
+    <div class={css(sectionContainerSx, { mt: { base: "8px", md: "48px" }, mb: { base: "24px", md: "48px" } })}>
+      <div class={css({ overflow: "hidden" })}>
+        {
+          partnersData.map(({ className, img }) => (
+            <div class:list={[className, css({ width: "max-content", whiteSpace: "nowrap" })]}>
+              {Array.from({ length: 2 }).map(() => (
+                <img
+                  src={img.src}
+                  width={img.width}
+                  height={img.height}
+                  loading="eager"
+                  alt="Gaming Panda partner company logo"
+                  class={css({ maxWidth: "none", display: "inline-block" })}
+                />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="events"
+    class={css({
+      bgColor: "#FAFAFA",
+      pb: "42px",
+    })}
+  >
+    <SectionHeader
+      heading="EVENTS"
+      subheading="Gaming-Panda Showcases Innovative Games at 2025 SiGMA Expo in Manila"
+      subSectionTitle="Upcoming Events"
+    />
+    <div class={css({ mt: { base: "8px", md: "48px" }, mb: { base: "24px", md: "48px" } })}>
+      <!-- <div class={css(sectionContainerSx, { overflow: "hidden", display: "flex", justifyContent: "center" })}>
+        <VideoButton client:load />
+      </div> -->
+      <div class={css({ mt: "40px" })}>
+        <EventsMarquee client:idle />
+      </div>
+    </div>
+  </section>
+
+  <section class={css({ pb: "40px" })} id="contact">
+    <div class={css(sectionContainerSx)}>
+      <SectionHeader
+        className={css({ mb: { base: "18px", md: "48px" } })}
+        heading="CONTACT"
+        subheading="If you share our commitment to providing high-quality games for global players, we invite you to join us!"
+        subSectionTitle="Contact Gaming Panda"
+      />
+      <NewContactCard />
+    </div>
+  </section>
+</BaseLayout>

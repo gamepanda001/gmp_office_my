@@ -1,0 +1,172 @@
+---
+import "../styles/index.css";
+import { css } from "../../styled-system/css";
+import { Image } from "astro:assets";
+import { container, stack } from "../../styled-system/patterns";
+import plus18 from "../assets/18+.png";
+import gcbSvg from "../assets/gcb.svg";
+import GLI from "../assets/GLI.png";
+
+import Header from "./Header";
+import { type NavProps } from "./types";
+import SEO from "../components/SEO.astro";
+import seoConfig from "../config/seo.json";
+
+interface Props {
+  navItems?: NavProps[];
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  type?: string;
+  pagePath?: string;
+  gameData?: {
+    name?: string;
+    title?: string;
+    desc?: string;
+    category?: string;
+    features?: string[];
+    rtp?: number;
+    maxodd?: string;
+    volatility?: string;
+    releaseDate?: number;
+    cover?: ImageMetadata;
+    shareImage?: string;
+  };
+}
+
+const { navItems, title, description, keywords, image, type, pagePath, gameData } = Astro.props;
+
+const gcbLink =
+  "https://cert.gcb.cw/certificate?id=ZXlKcGRpSTZJa3A2TldKVFEzQmtWVmw1VDJ3dllYRXpOVGhuTTJjOVBTSXNJblpoYkhWbElqb2lZa0pESzFSMldERlJZMVJ2VUZFeldIQjVRVGRRZW10UVMzWlpORzlDU0hOTmFrZHhUM3BOVFZkQ1dUMGlMQ0p0WVdNaU9pSmlNbU0wWWpCbVpUWmxZbVU0T1dabVltRTNNalV6WlRkalpUSTBORGxoTm1NeU56RXlaak13TjJVeFlUa3pOR1E1TVRaak1qWTNZamsyTWpBMllqZ3lJaXdpZEdGbklqb2lJbjA9";
+const cliLink = "https://access.gaminglabs.com/Certificate/Index?i=600";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <SEO
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+      type={type}
+      pagePath={pagePath}
+      gameData={gameData}
+    />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE2BJERSJS"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-RE2BJERSJS");
+    </script>
+  </head>
+  <body>
+    <Header navItems={navItems} client:only="react" />
+    <main>
+      <slot />
+    </main>
+    <footer class={css({ border: "1px solid #EDEDED", bgColor: "#FAFAFA" })}>
+      <div
+        class:list={[
+          container({ maxWidth: "1200px", px: "24px" }),
+          stack({
+            direction: { base: "column", md: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
+            my: { base: "32px", md: "48px" },
+            gap: { base: "24px", md: "12px" },
+          }),
+        ]}
+      >
+        <div
+          class={css({
+            textAlign: { base: "center", md: "right" },
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: {
+              base: "column",
+              md: "row",
+            },
+          })}
+        >
+          <div
+            class={css({
+              display: "flex",
+              // justifyContent: "space-between",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              // width: "209px",
+              marginBottom: {
+                base: "20px",
+                md: "0px",
+              },
+            })}
+          >
+            <Image src={plus18} width={48} height={48} alt="18+ age restriction symbol" class={css({ display: "inline" })} />
+            <div class={css({ width: "1px", height: "42px", bgColor: "#E2E2E2", margin: "0px 40px" })}></div>
+
+            <div class={css({ display: "flex", gap: "16px", alignItems: "center", flexShrink: 0 })}>
+              <a href={gcbLink} target="_blank">
+                <Image
+                  src={gcbSvg}
+                  width={60}
+                  height={34}
+                  alt="Gaming Control Board logo"
+                  class={css({ display: "inline", cursor: "pointer" })}
+                />
+              </a>
+              <!-- <Image src={GLI} width={66} height={30} alt="GLI certification logo" class={css({ display: "inline", cursor: "pointer" })} /> -->
+              <div>
+                <a href={cliLink} target="_blank">
+                  <Image
+                    src={GLI}
+                    width={106}
+                    height={38}
+                    alt="Gaming Control Board logo"
+                    class={css({ display: "inline", cursor: "pointer" })}
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <p
+            class={css({
+              textStyle: { base: "12_500_100", md: "16_500_100" },
+              color: "#6D7A7D",
+              marginLeft: {
+                base: "0px",
+                md: "49px",
+              },
+              flex: 1,
+              textAlign: "left",
+            })}
+          >
+            <!-- <a href="" class={css({ color: "#01B6CF" })}>http://gaming-panda.com</a> is operated by Pistis Trade N.V., a company
+            incorporated under the laws of Curaçao with Company Number 162576 and has a valid Certificate of Operation.Pistis Trade
+            N.V. has an application (OGL/2024/1670/1153) for a gaming license in progress with the Curaçao Gaming Control Board.
+            Until that process is concluded, based on a transitional arrangement, the company is permitted to continue its operations
+            under this Certificate of Operation.This Certificate of Operation is subject to the National Ordinance on Offshore Games
+            of Hazard (Landsverordening buitengaatse hazardspelen, P.B. 1993, no. 63) (NOOGH) -->
+            This is to certify that&nbsp;<a href="https://gaming-panda.com" class={css({ color: "#01B6CF" })}
+              >gaming-panda.com</a
+            > is operated by Pistis Trade N.V., a company incorporated under the laws of Curaçao with Company Number 162576 and licensed
+            by the Curaçao Gaming Authority to offer games of chance under license number OGL/2024/1670/1153 in accordance with the
+            National Ordinance on Games of Chance (Landsverordening op de kansspelen, P.B. 2024, no. 157).
+          </p>
+        </div>
+      </div>
+      <!-- <hr class={css({ borderTop: "8px solid #F74774" })} /> -->
+      <div class="modal-portal"></div>
+    </footer>
+  </body>
+</html>

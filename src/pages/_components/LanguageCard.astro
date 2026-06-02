@@ -1,0 +1,15 @@
+---
+import { css, cx } from "../../../styled-system/css";
+import CurrenciesGrid from "./CurrenciesGrid";
+import NumberHeading from "./NumberHeading.astro";
+import languages from "../../contents/language.json";
+
+const languageCount = languages.length;
+---
+
+<div
+  class={cx(css({ py: { base: "16px", md: "32px" }, px: { base: "24px", md: "32px" }, minH: { base: "none", md: "372px" } }))}
+>
+  <NumberHeading number={languageCount} hasPlus text="Language supported" className={css({ mb: { base: "48px", md: "32px" } })} />
+  <CurrenciesGrid client:load />
+</div>

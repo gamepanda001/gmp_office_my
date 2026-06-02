@@ -1,0 +1,36 @@
+---
+import { css, cx } from "../../../styled-system/css";
+import CountUp from "./CountUp";
+
+interface Props {
+  className?: string;
+  number: number;
+  hasPlus?: boolean;
+  text: string;
+}
+
+const { className, number, hasPlus, text } = Astro.props;
+---
+
+<div class={cx(css({ textAlign: "left", color: "#1B2C38" }), className)}>
+  <p
+    class={css({
+      textStyle: { base: "44_500_100", md: "56_600_75" },
+      height: { base: "44px", md: "auto" },
+      mb: { base: "8px", md: "16px" },
+      whiteSpace: "nowrap",
+    })}
+  >
+    <CountUp
+      client:only="react"
+      className={css({ marginRight: "-10px" })}
+      end={number}
+      enableScrollSpy
+      scrollSpyOnce
+      scrollSpyDelay={500}
+    />
+    <span>{`${hasPlus ? "+" : ""}`}</span>
+  </p>
+  <p class={css({ textStyle: { base: "13_500_150", md: "16_600_100" }, mb: { base: "10px", md: "20px" } })}>{text}</p>
+  <div class={css({ backgroundColor: "#01B6CF", borderRadius: "9999px", width: "32px", height: "6px" })}></div>
+</div>

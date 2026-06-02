@@ -1,0 +1,4 @@
+include:
+  - project: "devops/cicd"
+    ref: pro
+    file: templates/gmp-admin/gmp-official-website-pipeline.yml

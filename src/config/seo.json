@@ -1,0 +1,51 @@
+{
+  "globalConfig": {
+    "siteName": "Gaming Panda",
+    "siteUrl": "https://www.gaming-panda.com",
+    "defaultTitle": "Gaming Panda ‒ Slot, Scratch & Casino Game Integration",
+    "defaultDescription": "Gaming Panda offers quality slot, scratch, and casino games with full integration and customization. Play popular titles like Go Bananas, Super Ace, and ColorGame!",
+    "defaultKeywords": "Gaming Panda,gamingpanda,game,panda,slot,scratch,casino,lottery,game integration,game customization",
+    "defaultImage": "/og-image-games.jpg",
+    "twitterHandle": "@gamingpanda",
+    "twitterCardType": "summary_large_image",
+    "themeColor": "#F74774",
+    "language": "en"
+  },
+  "pages": {
+    "home": {
+      "title": "Gaming Panda ‒ Slot, Scratch & Casino Game Integration",
+      "description": "Gaming Panda offers quality slot, scratch, and casino games with full integration and customization. Play popular titles like Go Bananas, Super Ace, and ColorGame!",
+      "keywords": "Gaming Panda,gamingpanda,game,panda,slot,scratch,casino,lottery,game integration,game customization",
+      "image": "/og-image-games.jpg"
+    },
+    "games": {
+      "title": "Play Slots, Scratch/Lottery & Casino Games | Gaming Panda",
+      "description": "Discover top-quality slot, scratch/lottery, and casino games by Gaming Panda — featuring stunning visuals, fast gameplay, and full integration support.",
+      "keywords": "super ace, mines, color game, slot games, scratch games, casino games, go bananas, Gaming Panda games, online gaming, lottery games, fast skill games",
+      "image": "/og-image-games.jpg"
+    },
+    "gameDetail": {
+      "titleTemplate": "{gameName} - Gaming Panda",
+      "descriptionTemplate": "Play {gameName}, a {gameCategory} game by Gaming Panda. {gameDescription}",
+      "keywordsTemplate": "{gameName}, {gameCategory}, Gaming Panda, online game, {gameFeatures}"
+    }
+  },
+  "categories": {
+    "Slot": {
+      "description": "Explore our collection of exciting slot games with high RTP, stunning visuals and engaging gameplay.",
+      "keywords": "slot games, online slots, casino slots, high RTP slots"
+    },
+    "Crash": {
+      "description": "Experience the thrill of our crash games with multipliers and real-time gameplay.",
+      "keywords": "crash games, multiplier games, real-time games"
+    },
+    "Arcade": {
+      "description": "Play our arcade-style games with simple mechanics and engaging gameplay.",
+      "keywords": "arcade games, casual games, simple games"
+    },
+    "Table": {
+      "description": "Enjoy our collection of classic table games with modern twists.",
+      "keywords": "table games, card games, casino games"
+    }
+  }
+}

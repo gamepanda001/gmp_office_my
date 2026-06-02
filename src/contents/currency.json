@@ -1,0 +1,232 @@
+[
+  {
+    "id": "AED",
+    "name": "United Arab Emirates Dirham",
+    "icon": "https://static.lucky-mines.com/AED_1750404305382.png"
+  },
+  {
+    "id": "AUD",
+    "name": "Australian Dollar",
+    "icon": "https://static.lucky-mines.com/AUD_1750404305383.png"
+  },
+  {
+    "id": "BDT",
+    "name": "Bangladeshi Taka",
+    "icon": "https://static.lucky-mines.com/BDT_1750404305383.png"
+  },
+  {
+    "id": "BRL",
+    "name": "Brazilian Real",
+    "icon": "https://static.lucky-mines.com/BRL_1750404305383.png"
+  },
+  {
+    "id": "CLP",
+    "name": "Chilean Peso",
+    "icon": "https://static.lucky-mines.com/CLP_1750404305383.png"
+  },
+  {
+    "id": "COP",
+    "name": "Colombian Peso",
+    "icon": "https://static.lucky-mines.com/COP_1750404305384.png"
+  },
+  {
+    "id": "EGP",
+    "name": "Egyptian Pound",
+    "icon": "https://static.lucky-mines.com/EGP_1750404305384.png"
+  },
+  {
+    "id": "ETB",
+    "name": "Ethiopian Birr",
+    "icon": "https://static.lucky-mines.com/ETB_1750404305384.png"
+  },
+  {
+    "id": "EUR",
+    "name": "Euro",
+    "icon": "https://static.lucky-mines.com/EUR_1750404305384.png"
+  },
+  {
+    "id": "GHS",
+    "name": "Ghanaian Cedi",
+    "icon": "https://static.lucky-mines.com/GHS_1750404305384.png"
+  },
+  {
+    "id": "IDR",
+    "name": "Indonesian Rupiah",
+    "icon": "https://static.lucky-mines.com/IDR_1750404305384.png"
+  },
+  {
+    "id": "INR",
+    "name": "Indian Rupee",
+    "icon": "https://static.lucky-mines.com/INR_1750404305385.png"
+  },
+  {
+    "id": "KES",
+    "name": "Kenyan Shilling",
+    "icon": "https://static.lucky-mines.com/KES_1750404305385.png"
+  },
+  {
+    "id": "KRW",
+    "name": "Korean Won",
+    "icon": "https://static.lucky-mines.com/KRW_1750404305385.png"
+  },
+  {
+    "id": "KWD",
+    "name": "Kuwaiti Dinar",
+    "icon": "https://static.lucky-mines.com/KWD_1750404305385.png"
+  },
+  {
+    "id": "LBP",
+    "name": "Lebanese Pound",
+    "icon": "https://static.lucky-mines.com/LBP_1750404305385.png"
+  },
+  {
+    "id": "MXN",
+    "name": "Mexican Peso",
+    "icon": "https://static.lucky-mines.com/MXN_1750404305386.png"
+  },
+  {
+    "id": "MYR",
+    "name": "Malaysian Ringgit",
+    "icon": "https://static.lucky-mines.com/MYR_1750404305386.png"
+  },
+  {
+    "id": "MMK",
+    "name": "Myanmar Kyat",
+    "icon": "https://static.lucky-mines.com/MMK_1750404305385.png"
+  },
+  {
+    "id": "NGN",
+    "name": "Nigerian Naira",
+    "icon": "https://static.lucky-mines.com/NGN_1750404305386.png"
+  },
+  {
+    "id": "NPR",
+    "name": "Nepalese Rupee",
+    "icon": "https://static.lucky-mines.com/NPR_1750404305386.png"
+  },
+  {
+    "id": "PEN",
+    "name": "Peruvian Sol",
+    "icon": "https://static.lucky-mines.com/PEN_1750404305386.png"
+  },
+  {
+    "id": "PHP",
+    "name": "Philippine Peso",
+    "icon": "https://static.lucky-mines.com/PHP_1750404305386.png"
+  },
+  {
+    "id": "PKR",
+    "name": "Pakistani Rupee",
+    "icon": "https://static.lucky-mines.com/PKR_1750404305386.png"
+  },
+  {
+    "id": "SAR",
+    "name": "Saudi Riyal",
+    "icon": "https://static.lucky-mines.com/SAR_1750404305387.png"
+  },
+  {
+    "id": "SEK",
+    "name": "Swedish Krona",
+    "icon": "https://static.lucky-mines.com/SEK_1750404305387.png"
+  },
+  {
+    "id": "THB",
+    "name": "Thai Baht",
+    "icon": "https://static.lucky-mines.com/THB_1750404305387.png"
+  },
+  {
+    "id": "TND",
+    "name": "Tunisian Dinar",
+    "icon": "https://static.lucky-mines.com/TND_1750404305387.png"
+  },
+  {
+    "id": "TRY",
+    "name": "Turkish Lira",
+    "icon": "https://static.lucky-mines.com/TRY_1750404305387.png"
+  },
+  {
+    "id": "UGX",
+    "name": "Ugandan Shilling",
+    "icon": "https://static.lucky-mines.com/UGX_1750404305388.png"
+  },
+  {
+    "id": "USD",
+    "name": "US Dollar",
+    "icon": "https://static.lucky-mines.com/USD_1750404305388.png"
+  },
+  {
+    "id": "XOF",
+    "name": "West African CFA Franc",
+    "icon": "https://static.lucky-mines.com/XOF_1750404305388.png"
+  },
+  {
+    "id": "XAF",
+    "name": "Central African CFA Franc",
+    "icon": "https://static.lucky-mines.com/XAF_1750404305388.png"
+  },
+  {
+    "id": "ZAR",
+    "name": "South African Rand",
+    "icon": "https://static.lucky-mines.com/ZAR_1750404305389.png"
+  },
+  {
+    "id": "PGK",
+    "name": "Papua New Guinean Kina",
+    "icon": "https://static.gaming-panda.com/VND_1770692596547.png"
+  },
+  {
+    "id": "RUB",
+    "name": "Russian Ruble",
+    "icon": "https://static.gaming-panda.com/VND-1_1770692634486.png"
+  },
+  {
+    "id": "ARS",
+    "name": "Argentine Peso",
+    "icon": "https://static.gaming-panda.com/VND-2_1770692738538.png"
+  },
+  {
+    "id": "TWD",
+    "name": "New Taiwan Dollar",
+    "icon": "https://static.gaming-panda.com/VND-3_1770692751938.png"
+  },
+  {
+    "id": "CAD",
+    "name": "Canadian Dollar",
+    "icon": "https://static.gaming-panda.com/VND-4_1770692768679.png"
+  },
+  {
+    "id": "SGD",
+    "name": "Singapore Dollar",
+    "icon": "https://static.gaming-panda.com/VND-5_1770692618356.png"
+  },
+  {
+    "id": "JPY",
+    "name": "Japanese Yen",
+    "icon": "https://static.gaming-panda.com/VND-6_1770692800109.png"
+  },
+  {
+    "id": "NZD",
+    "name": "New Zealand Dollar",
+    "icon": "https://static.gaming-panda.com/VND-7_1770692812748.png"
+  },
+  {
+    "id": "IRR",
+    "name": "Iranian Rial",
+    "icon": "https://static.gaming-panda.com/VND-8_1770692822508.png"
+  },
+  {
+    "id": "LKR",
+    "name": "Sri Lankan Rupee",
+    "icon": "https://static.gaming-panda.com/VND-9_1770692839358.png"
+  },
+  {
+    "id": "LAK",
+    "name": "Lao Kip",
+    "icon": "https://static.gaming-panda.com/VND-10_1770692855290.png"
+  },
+  {
+    "id": "BND",
+    "name": "Brunei Dollar",
+    "icon": "https://static.gaming-panda.com/VND-11_1770692864649.png"
+  }
+]

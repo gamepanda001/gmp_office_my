@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import { css } from "../../../styled-system/css";
+import { hstack } from "../../../styled-system/patterns";
+import discountTagSvg from "../../assets/discount-tag.svg";
+import giftBoxWithABowSvg from "../../assets/gift-box-with-a-bow.svg";
+import crownSvg from "../../assets/crown.svg";
+import diamondTagSvg from "../../assets/diamond.svg";
+
+const list = [
+  {
+    img: discountTagSvg,
+    text: "Promo materials supply",
+  },
+  {
+    img: giftBoxWithABowSvg,
+    text: "Free/Bonus/Welcome spins",
+  },
+  {
+    img: crownSvg,
+    text: "Personalized offers",
+  },
+  {
+    img: diamondTagSvg,
+    text: "Exclusive pre-releases",
+  },
+];
+
+interface Props {
+  className?: string;
+  slot?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class:list={[css({ px: "32px", py: "30px", width: "100%" }), className]}>
+  <h4 class={css({ textStyle: "20_700_100", mb: "32px" })}>ACCOUNT MANAGEMENT SUPPORT</h4>
+  <div class={hstack({ flexWrap: "wrap", gap: "20px", justifyContent: "space-between" })}>
+    {
+      list.map(({ img, text }) => (
+        <div class={hstack({ gap: "16px" })}>
+          <Image src={img} alt={`${text} icon`} width={44} height={44} class={css({ flex: "0 0 44px" })} quality={100} />
+          <div class={css({ textStyle: "18_700_100", color: "#6D7A7D", truncate: true })}>{text}</div>
+        </div>
+      ))
+    }
+  </div>
+</div>

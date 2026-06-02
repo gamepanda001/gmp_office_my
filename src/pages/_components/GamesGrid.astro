@@ -1,0 +1,60 @@
+---
+import { css } from "../../../styled-system/css";
+import { grid } from "../../../styled-system/patterns";
+import { gamesForGrid } from "../../contents/games";
+import { Image } from "astro:assets";
+
+const containerSx = grid({
+  gridTemplateColumns: "repeat(auto-fill, minmax(64px, 1fr))",
+  gridTemplateRows: "repeat(auto-fill, minmax(64px, 1fr))",
+  gap: "24px",
+});
+---
+
+<style>
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(0.75);
+      opacity: 0.85;
+    }
+    30% {
+      transform: scale(0.75);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+</style>
+<div id="game-grid" class={containerSx}>
+  {
+    gamesForGrid.map((icon, index) => (
+      <Image
+        src={icon}
+        alt=""
+        class={css({ borderRadius: "8px", animation: "2s ease-in-out" })}
+        style={{ animationDelay: `${index * 100}ms` }}
+      />
+    ))
+  }
+</div>
+<script>
+  const gameGridElem = document.getElementById("game-grid");
+  let hasShowed = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!hasShowed && entry.isIntersecting) {
+        hasShowed = true;
+        gameGridElem?.querySelectorAll("img")?.forEach((image) => {
+          image.style.animationName = "scale";
+        });
+      }
+    });
+  });
+  if (gameGridElem) {
+    observer.observe(gameGridElem);
+  }
+</script>

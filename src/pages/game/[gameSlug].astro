@@ -1,0 +1,430 @@
+---
+export const prerender = true;
+
+import { css } from "../../../styled-system/css";
+import { hstack, stack, flex, grid } from "../../../styled-system/patterns";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ScreenshotCarousel from "./_components/ScreenshotCarousel";
+import Modal from "./_components/Modal";
+import HeroBox from "./_components/HeroBox";
+import HeroBoxMobile from "./_components/HeroBoxMobile";
+import { Image } from "astro:assets";
+
+import { games } from "../../contents/games";
+import { sectionContainerSx } from "../../styles/common";
+import dayjs from "dayjs";
+import PlayButton from "./_components/PlayButton";
+import type { Game } from "../../contents/Game";
+import PcIcon from "../../assets/device/pc.svg";
+import MobileIcon from "../../assets/device/phone.svg";
+import TabletIcon from "../../assets/device/pad.svg";
+
+import FlagGird from "./_components/FlagGird";
+import NewContactCard from "../../components/NewContactCard.astro";
+export function getStaticPaths() {
+  return games.map(({ slug }) => ({
+    params: { gameSlug: slug },
+  }));
+}
+
+const { gameSlug } = Astro.params;
+
+const game = games.find(({ slug }) => slug === gameSlug);
+
+const weightOfGame = (current: Game, target: Game) => {
+  const base = current.category === target.category ? 100000000 : 0;
+  return base - target.weight * 10 + target.releaseDate / 1e13;
+};
+
+const similarGames = game
+  ? games
+      .filter((g) => g.game_code !== game.game_code)
+      .sort((a, b) => weightOfGame(game, b) - weightOfGame(game, a))
+      .slice(0, 6)
+  : [];
+
+const additionalInfo = [
+  {
+    heading: "RTP",
+    content: `${game?.rtp}`,
+  },
+
+  {
+    heading: "Volatility",
+    content: game?.volatility,
+  },
+    {
+    heading: "Max Odd",
+    content: game?.maxodd,
+  },
+];
+
+const gameTitleSx = css({ textStyle: { base: "32_800_100_Up", md: "48_800_100_Up" }, color: "#000000" });
+
+const gameDescSx = css({
+  textStyle: { base: "14_500_142", md: "16_500_140" },
+  mb: { base: "26px", md: "32px" },
+  color: "#6D7A7D",
+});
+
+const featureItemSx = css({
+  display: "flex",
+  alignItems: "center",
+  flexWrap: "nowrap",
+  gap: "8px",
+  flexShrink: "0",
+  borderRadius: "8px",
+  color: "#01B6CF",
+  border: "2px solid currentColor",
+  height: { base: "38px", md: "48px" },
+  px: { base: "12px", md: "16px" },
+});
+
+const heading5Sx = css({ textStyle: { base: "14_500_100", md: "16_500_100" }, color: "#6D7A7D" });
+
+const gameListSx = flex({
+  direction: "row",
+  flexWrap: "nowrap",
+  overflowX: "auto",
+  overflowY: "hidden",
+  gap: { base: "16px", md: "48px" },
+  scrollbar: "hidden",
+});
+
+const gameIconBoxSx = css({
+  width: { base: "96px", md: "160px" },
+  height: { base: "96px", md: "160px" },
+  overflow: "hidden",
+  borderRadius: "19px",
+});
+
+// 如果没有找到游戏，设置 404 状态码
+if (!game) {
+  Astro.response.status = 404;
+}
+---
+
+<BaseLayout
+  gameData={{
+    name: game?.name,
+    title: game?.title,
+    desc: game?.desc,
+    category: game?.category,
+    features: game?.features?.map((f: { text: string }) => f.text) ?? [],
+    rtp: game?.rtp,
+    maxodd: game?.maxodd,
+    volatility: game?.volatility,
+    releaseDate: game?.releaseDate,
+    cover: game?.cover,
+    shareImage: game?.shareImage,
+  }}
+  pagePath={`/game/${gameSlug}`}
+  title={game ? `${game.title} - Gaming Panda` : "Game Not Found - Gaming Panda"}
+  description={game ? game.desc : "Sorry, the game you are looking for does not exist."}
+>
+  {
+    !game ? (
+      // 游戏不存在时显示 404 内容
+      <main
+        class={css({
+          minHeight: "60vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          py: { base: "40px", md: "80px" },
+        })}
+      >
+        <div class={css({ maxWidth: "800px", px: "24px" })}>
+          <h1
+            class={css({
+              textStyle: { base: "48_700_100", md: "72_700_100" },
+              color: "#F74774",
+              mb: "16px",
+            })}
+          >
+            404
+          </h1>
+          <h2
+            class={css({
+              textStyle: { base: "20_600_100", md: "24_600_100" },
+              color: "#333",
+              mb: "8px",
+            })}
+          >
+            Game Not Found
+          </h2>
+          <p
+            class={css({
+              textStyle: { base: "16_400_100", md: "18_400_100" },
+              color: "#6D7A7D",
+              mb: "32px",
+              maxWidth: "500px",
+              mx: "auto",
+            })}
+          >
+            Sorry, the game you are looking for does not exist or has been moved. Please check if the URL is correct, or return
+            to the homepage to browse our games.
+          </p>
+          <div
+            class={css({
+              display: "flex",
+              gap: "16px",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            })}
+          >
+            <a
+              href="/"
+              class={css({
+                display: "inline-flex",
+                alignItems: "center",
+                px: "24px",
+                py: "12px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: "600",
+                backgroundColor: "#F74774",
+                color: "white",
+                _hover: { backgroundColor: "#E03E5F" },
+              })}
+            >
+              Back to Home
+            </a>
+            <a
+              href="/games"
+              class={css({
+                display: "inline-flex",
+                alignItems: "center",
+                px: "24px",
+                py: "12px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: "600",
+                backgroundColor: "transparent",
+                color: "#F74774",
+                border: "2px solid #F74774",
+                _hover: { backgroundColor: "#F74774", color: "white" },
+              })}
+            >
+              Browse Games
+            </a>
+          </div>
+        </div>
+      </main>
+    ) : (
+      // 游戏存在时显示正常内容
+      <>
+        <Modal client:only="react" />
+        <section id="hero-section">
+          <HeroBoxMobile
+            className={css({ hideFrom: "md" })}
+            client:load
+            client:media="(max-width: 768px)"
+            gameCode={game.game_code}
+            heroImage={game?.heroImageMobile}
+          />
+          <HeroBox
+            className={css({ hideBelow: "md" })}
+            client:load
+            client:media="(min-width: 768px)"
+            gameCode={game.game_code}
+            bgImage={game?.heroImageBg}
+            bgColor={game?.heroImageBgColor ?? ""}
+            fgImage={game?.heroImageFg}
+          />
+        </section>
+
+        <section class={css(sectionContainerSx, { py: "40px", bgColor: "#FFFFFF", position: "relative" })}>
+          <div id="game-info" class={css({ position: "absolute", top: "-64px" })} />
+          <div class={stack({ direction: "row", justifyContent: "space-between", flexWrap: "wrap", gap: "30px" })}>
+            <div class={css({ flex: "0 1 596px" })}>
+              <div
+                class={css({
+                  display: "flex",
+                  gap: "12px",
+                  alignItems: "flex-start",
+                  mb: {
+                    base: "16px",
+                    md: "42px",
+                  },
+                })}
+              >
+                <h3 class={gameTitleSx}>{game?.title}</h3>
+                <div
+                  class={css({
+                    textStyle: { base: "13_700_100", md: "18_700_100" },
+                    color: "#fff",
+                    background: "#F74774",
+                    px: { base: "7px", md: "10px" },
+                    height: { base: "24px", md: "36px" },
+                    borderRadius: { base: "6px", md: "8px" },
+                    display: "flex",
+                    alignItems: "center",
+                    mt: { base: "2px", md: "4px" },
+                  })}
+                >
+                  {game?.category}
+                </div>
+              </div>
+
+              <p class={gameDescSx}>{game?.desc}</p>
+              <div
+                class={css({
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  width: "100%",
+                  direction: "ltr",
+                  alignItems: "center",
+                })}
+              >
+                {additionalInfo.map(({ heading, content }) => (
+                  <div
+                    class={css({
+                      mb: { base: "26px", md: "32px" },
+                      // justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      background: "#FAFAFA",
+                      py: "16px",
+                      gap: "8px",
+                    })}
+                  >
+                    <h5 class={heading5Sx}>{heading}</h5>
+                    <h5 class={css({ 
+                      textStyle: { 
+                          base: additionalInfo[0].content.length > 7 ? "20_500_100" : "24_500_100", 
+                          md: "28_500_100" 
+                      } 
+                    })}>{content}</h5>
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <h4 class={css({ textStyle: { base: "24_700_100_Up", md: "32_700_100_Up" }, mb: "16px" })}>feature</h4>
+                <ul class:list={[flex({ flexWrap: "wrap", gap: "12px" }), css({ mb: "32px" })]}>
+                  {game?.features.map((feature: { icon: string; text: string }) => (
+                    <li class={featureItemSx}>
+                      <Image
+                        src={feature.icon}
+                        alt={feature.text}
+                        width={24}
+                        height={24}
+                        class={css({ width: { base: "18px", md: "24px" }, height: { base: "18 px", md: "24px" } })}
+                      />
+                      <span
+                        class={css({
+                          textStyle: { base: "14_700_100", md: "16_700_100" },
+                          display: "inline-block",
+                          whiteSpace: "nowrap",
+                        })}
+                      >
+                        {feature.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class={flex({ flexWrap: "wrap", mb: { base: "32px", md: "32px" } })}>
+                <div class={css({ flex: "1 1 100%" })}>
+                  <h4 class={css({ textStyle: { base: "24_700_100_Up", md: "32_700_100_Up" }, mb: "32px" })}>Language</h4>
+                  <FlagGird  client:load/>
+                </div>
+              </div>
+
+              <div class={flex({ justifyContent: "space-between", alignItems: "center" })}>
+                <h5 class={heading5Sx}>Publish Time:{dayjs(game?.releaseDate).format("YYYY-MM")}</h5>
+                <div class={flex({ alignItems: "center" })}>
+                  <h5
+                    class={css({
+                      mb: "0",
+                      mr: "8px",
+                      textStyle: { base: "14_500_100", md: "16_500_100" },
+                      color: "#6D7A7D",
+                      display: { md: "block", base: "none" },
+                    })}
+                  >
+                    Device Support:
+                  </h5>
+                  <div class={flex({ gap: "10px", alignItems: "center" })}>
+                    {[PcIcon, MobileIcon, TabletIcon].map((icon, index) => (
+                      <div class={css({ width: "40px", height: "40px", overflow: "hidden", borderRadius: "4px" })}>
+                        <Image
+                          src={icon}
+                          alt={index === 0 ? "PC support" : index === 1 ? "Mobile support" : "Tablet support"}
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <PlayButton client:visible className={css({ mt: "27px", hideBelow: "md" })} />
+            </div>
+            <div
+              class={css({ width: "345px", flex: "1 0 345px", mx: "auto" })}
+              hidden={!game?.screenshots || game.screenshots.length === 0}
+            >
+              <ScreenshotCarousel client:load screenshots={game?.screenshots ?? []} />
+            </div>
+          </div>
+        </section>
+
+        <section class={css({ bgColor: "#FAFAFA", pt: { base: "24px", md: "48px" }, pb: { base: "54px", md: "64px" } })}>
+          <div class={css(sectionContainerSx)}>
+            <header
+              class={css(hstack.raw({ justify: "space-between", alignItems: "center" }), { mb: { base: "20px", md: "48px" } })}
+            >
+              <h3 class={css({ textStyle: { base: "24_700_100_Up", md: "32_700_100_Up" } })}>Similar Games</h3>
+              <a
+                class={css({
+                  textStyle: { base: "16_600_100", md: "20_600_100" },
+                  color: { base: "#6D7A7D", _hover: "#01B6CF" },
+                })}
+                href="/games"
+              >
+                <span>All Games</span>
+              </a>
+            </header>
+            <ul class={gameListSx}>
+              {similarGames.map(({ slug, icon, title }) => (
+                <li class={css({ flex: "0 0", flexBasis: { base: "96px", md: "160px" } })}>
+                  <a href={`/game/${slug}`}>
+                    <div class={gameIconBoxSx}>
+                      <img
+                        width={160}
+                        height={160}
+                        src={icon}
+                        alt={`${title} game icon`}
+                        class={css({ transition: "transform 0.4s ease", _hover: { transform: "scale(1.1)" } })}
+                      />
+                    </div>
+                    <div
+                      class={css({
+                        textStyle: { base: "16_500_100_Up", md: "20_500_100_Up" },
+                        color: "#6D7A7D",
+                        textAlign: "center",
+                        mt: { base: "12px", md: "24px" },
+                      })}
+                    >
+                      {title}
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section class={css(sectionContainerSx, { py: { base: "24px", lg: "40px" } })} id="contact">
+          <NewContactCard/>
+        </section>
+      </>
+    )
+  }
+</BaseLayout>

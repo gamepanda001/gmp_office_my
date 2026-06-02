@@ -1,0 +1,73 @@
+---
+import { css } from "../../styled-system/css";
+import { container, stack } from "../../styled-system/patterns";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { button } from "../styles/recipes";
+
+// 404页面的样式
+const containerSx = css({
+  minHeight: "60vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  py: { base: "40px", md: "80px" }
+});
+
+const headingSx = css({
+  fontSize: { base: "80px", md: "160px" },
+  fontWeight: "700",
+  lineHeight: "1",
+  color: "#F74774",
+  mb: "16px"
+});
+
+const subHeadingSx = css({
+  textStyle: { base: "20_600_100", md: "24_600_100" },
+  color: "#333",
+  mb: "8px"
+});
+
+const descriptionSx = css({
+  textStyle: { base: "16_400_100", md: "18_400_100" },
+  color: "#6D7A7D",
+  mb: "32px",
+  maxWidth: "500px",
+  mx: "auto"
+});
+
+const buttonGroupSx = css({
+  display: "flex",
+  gap: "16px",
+  justifyContent: "center",
+  flexWrap: "wrap"
+});
+---
+
+<BaseLayout
+  title="Page Not Found - Gaming Panda"
+  description="Sorry, the page you are looking for does not exist. Please return to the homepage or browse our games."
+  keywords="404, page not found, Gaming Panda"
+  pagePath="/404"
+>
+  <main class={containerSx}>
+    <div class={container({ maxWidth: "800px", px: "24px" })}>
+      <div class={stack({ gap: "0" })}>
+        <h1 class={headingSx}>404</h1>
+        <h2 class={subHeadingSx}>Page Not Found</h2>
+        <p class={descriptionSx}>
+          Sorry, the page you are looking for does not exist or has been moved. Please check if the URL is correct, or return to the homepage to browse our content.
+        </p>
+        <div class={buttonGroupSx}>
+          <a href="/" class={button({ color: "primary" })}>
+            Back to Home
+          </a>
+          <a href="/games" class={button({ color: "secondary" })}>
+            Browse Games
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
