@@ -1,5 +1,35 @@
 [
   {
+    "id": "1698217759617",
+    "name": "EGG SHOOTER",
+    "title": "EGG SHOOTER",
+    "desc": "Become a dinosaur in Egg Shooter and have fun shooting eggs as you climb higher for bigger and bigger rewards; enjoy every shot as you ascend the tower, each precise hit bringing you closer to the most precious diamond; conquer the top together with a shining treasure, where the higher you go, the more explosive and endless the rewards and excitement become!",
+    "releaseDate": 46181,
+    "category": "Arcade",
+    "status": 1,
+    "weight": 999,
+    "rtp": "98.05%",
+    "features": [
+      "Provable Fairness",
+      "Auto Bet",
+      "Difficulty Level Selectable",
+      "Jackpot"
+    ],
+    "icon": "https://static.gaming-panda.com/[gp_arcade_95]_icon_1780640089494.png",
+    "cover": "https://static.gaming-panda.com/[gp_arcade_95]_cover_1780640153598.png",
+    "card": "https://static.gaming-panda.com/[gp_arcade_95]_card_1780640369772.png",
+    "cardBgColor": "rgba(255/242/158/1)",
+    "heroImageFg": "https://static.gaming-panda.com/[gp_crash_95]_heroImageFG_1780641895790.png",
+    "heroImageBg": "https://static.gaming-panda.com/[gp_arcade_95]_heroImageBG_1780640509644.png",
+    "heroImageMobile": " https://static.gaming-panda.com/[gp_arcade_95]_heroImageMobile_1780640619843.png",
+    "screenshots": "https://static.gaming-panda.com/[gp_arcade_95]_screen1_1780640894978.png\n,https://static.gaming-panda.com/[gp_arcade_95]_screen2_1780641098106.png\n,https://static.gaming-panda.com/[gp_arcade_95]_screen3_1780641194977.png",
+    "maxodd": "100X",
+    "volatility": "Low",
+    "sharepic": "https://static.gaming-panda.com/[gp_arcade_95]_sharepic_1780641778407.png",
+    "hotgame": "",
+    "game_code": "gp_arcade_95"
+  },
+  {
     "id": "1698217759273",
     "name": "MAHJONG PANDA",
     "title": "MAHJONG PANDA",
