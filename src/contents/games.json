@@ -1,5 +1,36 @@
 [
   {
+    "id": "1698217761750",
+    "name": "BIG MONEY MANIA",
+    "title": "BIG MONEY MANIA",
+    "desc": "The Wild Vault is unlocked! Watch a massive burst of Wilds shoot across the screen, covering the reels with endless winning possibilities. Every Wild can ignite explosive combinations and trigger huge payouts in an instant. Open the Wild Vault and experience the thrill of chasing gigantic wins!",
+    "releaseDate": 46191,
+    "category": "Slot",
+    "status": 1,
+    "weight": 999,
+    "rtp": "97.05%",
+    "features": [
+      "Buy Feature",
+      "Multiplier Symbol",
+      "5×4 Reels",
+      "20 Paylines",
+      "Wild Rain"
+    ],
+    "icon": "https://static.gaming-panda.com/gp_slot_92_icon_1781682823229.png",
+    "cover": "https://static.gaming-panda.com/gp_slot_92_cover_1781682803384.png",
+    "card": "https://static.gaming-panda.com/gp_slot_92_card_1781682745072.png",
+    "cardBgColor": "rgba(210,80,3,1)",
+    "heroImageFg": "https://static.gaming-panda.com/gp_slot_92_heroImageFg_1781682895581.png",
+    "heroImageBg": "https://static.gaming-panda.com/gp_slot_92_heroImageBg_1781776195031.png",
+    "heroImageMobile": "https://static.gaming-panda.com/gp_slot_92_heroImageMobile_1781682965648.png",
+    "screenshots": "https://static.gaming-panda.com/gp_slot_92_screen4_1781778594116.png\n,https://static.gaming-panda.com/gp_slot_92_screen3_1781778594116.png\n,https://static.gaming-panda.com/gp_slot_92_screen1_1781778594116.png\n,https://static.gaming-panda.com/gp_slot_92_screen2_1781778594116.png",
+    "maxodd": "1,410x",
+    "volatility": "Medium",
+    "sharepic": "https://static.gaming-panda.com/gp_slot_92_sharepic_1781682992236.png",
+    "hotgame": "",
+    "game_code": "gp_slot_96"
+  },
+  {
     "id": "1698217759617",
     "name": "EGG SHOOTER",
     "title": "EGG SHOOTER",
