@@ -1,5 +1,36 @@
 [
   {
+    "id": "1698217763030",
+    "name": "DOLLAR RUSH",
+    "title": "DOLLAR RUSH",
+    "desc": "Get ready for Money Rain in Dollar Rush! Watch stacks of cash shower the reels, unlocking massive wins and endless excitement. Your next big payday is just one step away!",
+    "releaseDate": 46205,
+    "category": "Crash",
+    "status": 1,
+    "weight": 999,
+    "rtp": "97%",
+    "features": [
+      "Provable Fairness",
+      "Auto Bet",
+      "Increasing Multiplier",
+      "Difficulty Level Selectable",
+      "Money Rain"
+    ],
+    "icon": "https://static.gaming-panda.com/gp_crash_99_icon_1782967741289.png",
+    "cover": "https://static.gaming-panda.com/gp_crash_99_cover_1782967814712.png",
+    "card": "https://static.gaming-panda.com/gp_crash_99_card_1782967839064.png",
+    "cardBgColor": "rgba(255,198,43,1)",
+    "heroImageFg": "https://static.gaming-panda.com/gp_crash_99_heroImageFg_1782967908952.png",
+    "heroImageBg": "https://static.gaming-panda.com/gp_crash_99_heroImageBg_1782968084207.png",
+    "heroImageMobile": "https://static.gaming-panda.com/gp_crash_99_heroImageMobile_1782968101759.png",
+    "screenshots": "https://static.gaming-panda.com/screenshot1_1783050112739.png，\nhttps://static.gaming-panda.com/screenshot2_1783050112739.png，\nhttps://static.gaming-panda.com/screenshot3_1783050112739.png",
+    "maxodd": "100X",
+    "volatility": "High",
+    "sharepic": "https://static.gaming-panda.com/gp_crash_99_sharepic_1782968447102.png",
+    "hotgame": "",
+    "game_code": "gp_crash_99"
+  },
+  {
     "id": "1698217761750",
     "name": "BIG MONEY MANIA",
     "title": "BIG MONEY MANIA",
