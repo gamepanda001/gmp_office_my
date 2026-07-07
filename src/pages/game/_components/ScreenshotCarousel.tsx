@@ -13,15 +13,48 @@ const swiperNavBtnSx = css({
   fontSize: {base: '28px', md: '48px'},
 });
 
+const phoneFrameSx = css({
+  position: "relative",
+  mx: "auto",
+  width: "75.912%",
+  aspectRatio: "416 / 854",
+});
+
+const phoneImgSx = css({
+  display: "block",
+  width: "100%",
+  height: "100%",
+});
+
 const containerSx = css({
   position: "absolute",
   top: "1.639%",
-  right: "4.00%",
-  bottom: "1.575%",
   left: "4.326%",
+  width: "91.674%",
+  height: "96.786%",
   borderRadius: "11.811% / 5.461%",
   overflow: "hidden",
   bgColor: "#000000"
+});
+
+const swiperSx = css({
+  width: "100%",
+  height: "100%",
+  "& .swiper-wrapper": {
+    height: "100%",
+  },
+  "& .swiper-slide": {
+    height: "100%",
+    overflow: "hidden",
+  },
+});
+
+const screenshotSx = css({
+  width: "100%",
+  height: "100%",
+  bgSize: "cover",
+  bgPosition: "center",
+  bgRepeat: "no-repeat",
 });
 
 export interface Props {
@@ -32,13 +65,13 @@ function ScreenshotCarousel(props: Props) {
   const { screenshots } = props;
   return (
     <div className={css({ position: "relative" })}>
-      <div className={css({ position: "relative", mx: "auto", width: "75.912%" })}>
-        <img src={phonePng.src} width={416} alt="Mobile phone frame" className={css({ width: "100%" })} />
+      <div className={phoneFrameSx}>
+        <img src={phonePng.src} width={416} height={854} alt="Mobile phone frame" className={phoneImgSx} />
         <div className={containerSx}>
-          <SwiperContainer loop modules={[Navigation, Autoplay]} navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }} autoplay={{ delay: 3000, pauseOnMouseEnter: true }}>
+          <SwiperContainer className={swiperSx} loop modules={[Navigation, Autoplay]} navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }} autoplay={{ delay: 3000, pauseOnMouseEnter: true }}>
             {screenshots.map((img, index) => (
               <SwiperSlide key={index}>
-                <img className={css({ width: "100%", height: "100%" })} src={img} alt={`Game screenshot ${index + 1}`} />
+                <div className={screenshotSx} role="img" aria-label={`Game screenshot ${index + 1}`} style={{ backgroundImage: `url(${img})` }} />
               </SwiperSlide>
             ))}
           </SwiperContainer>
