@@ -1,5 +1,36 @@
 [
   {
+    "id": "1698217764494",
+    "name": "BILLIONAIRE BOOM",
+    "title": "BILLIONAIRE BOOM",
+    "desc": "The Money Rain is about to hit in Billionaire Boom! Watch bundles of cash pour from the sky as the wealth multiplier soars. Time it right and lock in your winnings before the crash—every move brings you one step closer to the billionaire lifestyle. Catch the cash, claim your fortune, and become the next BILLIONAIRE!",
+    "releaseDate": 46240,
+    "category": "Crash",
+    "status": 1,
+    "weight": 999,
+    "rtp": "97%",
+    "features": [
+      "Provable Fairness",
+      "Auto Bet",
+      "Increasing Multiplier",
+      "Difficulty Level Selectable",
+      "Money Rain"
+    ],
+    "icon": "https://static.gaming-panda.com/head_1785928077496.png",
+    "cover": "https://static.gaming-panda.com/web-list_1785928105223.png",
+    "card": "https://static.gaming-panda.com/web-home-cover_1785930578269.png",
+    "cardBgColor": "rgba(73, 146, 255, 0.5)",
+    "heroImageFg": "https://static.gaming-panda.com/web-banner-fg_1785927757638.png",
+    "heroImageBg": "https://static.gaming-panda.com/web-banner-bg_1785927844383.png",
+    "heroImageMobile": "https://static.gaming-panda.com/h5-banner_1785927879618.png",
+    "screenshots": "https://static.gaming-panda.com/image1_1785926901745.png\n,\nhttps://static.gaming-panda.com/image2_1785926901745.png\n,\nhttps://static.gaming-panda.com/image3_1785926901745.png",
+    "maxodd": "100X",
+    "volatility": "High",
+    "sharepic": "https://static.gaming-panda.com/cover_1785928035653.png",
+    "hotgame": "",
+    "game_code": "gp_crash_102"
+  },
+  {
     "id": "1698217763754",
     "name": "SUPER SPICY ROULLETE",
     "title": "SUPER SPICY ROULLETE",
