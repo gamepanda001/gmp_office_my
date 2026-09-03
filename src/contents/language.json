@@ -5,34 +5,19 @@
     "icon": "https://static.lucky-mines.com/US_1749109352944.png"
   },
   {
-    "id": "KR",
-    "name": "Korean",
-    "icon": "https://static.lucky-mines.com/KR_1749109352943.png"
+    "id": "BR",
+    "name": "Portuguese",
+    "icon": "https://static.lucky-mines.com/BR_1749109352943.png"
   },
   {
-    "id": "RU",
-    "name": "Russian",
-    "icon": "https://static.lucky-mines.com/RU_1749109352944.png"
+    "id": "ES",
+    "name": "Spanish",
+    "icon": "https://static.gaming-panda.com/spain_1787812012062.jpg"
   },
   {
-    "id": "TR",
-    "name": "Turkish",
-    "icon": "https://static.lucky-mines.com/TR_1749109352944.png"
-  },
-  {
-    "id": "IN",
-    "name": "Hindi",
-    "icon": "https://static.lucky-mines.com/IN_1749109352943.png"
-  },
-  {
-    "id": "AE",
-    "name": "Arabic",
-    "icon": "https://static.lucky-mines.com/AE_1749109352942.png"
-  },
-  {
-    "id": "JP",
-    "name": "Japanese",
-    "icon": "https://static.lucky-mines.com/JP_1749109352943.png"
+    "id": "ID",
+    "name": "Indonesian",
+    "icon": "https://static.gaming-panda.com/indo_1787811983501.jpg"
   },
   {
     "id": "TH",
@@ -40,8 +25,18 @@
     "icon": "https://static.lucky-mines.com/TH_1749109352944.png"
   },
   {
-    "id": "BR",
-    "name": "Portuguese",
-    "icon": "https://static.lucky-mines.com/BR_1749109352943.png"
+    "id": "IN",
+    "name": "Hindi",
+    "icon": "https://static.lucky-mines.com/IN_1749109352943.png"
+  },
+  {
+    "id": "AR",
+    "name": "Arabic",
+    "icon": "https://static.lucky-mines.com/AE_1749109352942.png"
+  },
+  {
+    "id": "JP",
+    "name": "Japanese",
+    "icon": "https://static.lucky-mines.com/JP_1749109352943.png"
   }
 ]
