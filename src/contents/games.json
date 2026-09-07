@@ -1,5 +1,37 @@
 [
   {
+    "id": "",
+    "name": "MAHJONG GOLDEN GATE",
+    "title": "MAHJONG GOLDEN GATE",
+    "desc": "WIN UP TO 10,000X in the ultimate Mahjong Golden Gate adventure! Hit massive wins with powerful MEGA WILDS and EXPANDING REELS that unlock even more winning possibilities! Enter FREE SPINS and watch your Multipliers accumulate continuously across every spin! The more you play, the bigger the multiplier grows — leading you closer to an incredible 10,000X WIN!",
+    "releaseDate": 46272,
+    "category": "Slot",
+    "status": 1,
+    "weight": 999,
+    "rtp": "96.55%",
+    "features": [
+      "Auto Bet",
+      "Buy Feature",
+      "Increasing Multiplier",
+      "Free Spin",
+      "Extra Bet",
+      "Mega Wild"
+    ],
+    "icon": "https://static.gaming-panda.com/gp_slot_104_icon_1788751868294.png",
+    "cover": "https://static.gaming-panda.com/gp_slot_104_cover_1788751902630.png",
+    "card": "https://static.gaming-panda.com/gp_slot_104_card_1788751922390.png",
+    "cardBgColor": "rgba(219, 21, 4, 1)",
+    "heroImageFg": "https://static.gaming-panda.com/gp_slot_104_heroImageFg_1788751946310.png",
+    "heroImageBg": "https://static.gaming-panda.com/gp_slot_104_heroImageBg_1788751963102.png",
+    "heroImageMobile": "https://static.gaming-panda.com/gp_slot_104_heroImageMobile_1788751975773.png",
+    "screenshots": "https://static.gaming-panda.com/gp_slot_104_screenshot1_1788752027181.png\n,\nhttps://static.gaming-panda.com/gp_slot_104_screenshot2_1788752027182.png\n,\nhttps://static.gaming-panda.com/gp_slot_104_screenshot3_1788752027182.png",
+    "maxodd": "10,000X",
+    "volatility": "Medium High",
+    "sharepic": "https://static.gaming-panda.com/gp_slot_104_sharepic_1788752101429.png",
+    "hotgame": "",
+    "game_code": "gp_slot_104"
+  },
+  {
     "id": "1698217764928",
     "name": "ICE MINER SLOT",
     "title": "ICE MINER SLOT",
