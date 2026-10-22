@@ -6,6 +6,7 @@ import { container, stack } from "../../styled-system/patterns";
 import plus18 from "../assets/18+.png";
 import gcbSvg from "../assets/gcb.svg";
 import GLI from "../assets/GLI.png";
+import logoSvg from "../assets/logo.svg";
 
 import Header from "./Header";
 import { type NavProps } from "./types";
@@ -40,6 +41,13 @@ const { navItems, title, description, keywords, image, type, pagePath, gameData 
 const gcbLink =
   "https://cert.gcb.cw/certificate?id=ZXlKcGRpSTZJa3A2TldKVFEzQmtWVmw1VDJ3dllYRXpOVGhuTTJjOVBTSXNJblpoYkhWbElqb2lZa0pESzFSMldERlJZMVJ2VUZFeldIQjVRVGRRZW10UVMzWlpORzlDU0hOTmFrZHhUM3BOVFZkQ1dUMGlMQ0p0WVdNaU9pSmlNbU0wWWpCbVpUWmxZbVU0T1dabVltRTNNalV6WlRkalpUSTBORGxoTm1NeU56RXlaak13TjJVeFlUa3pOR1E1TVRaak1qWTNZamsyTWpBMllqZ3lJaXdpZEdGbklqb2lJbjA9";
 const cliLink = "https://access.gaminglabs.com/Certificate/Index?i=600";
+
+// 页脚法律信息链接（牌照要求的三份政策页面）
+const policyLinks = [
+  { label: "Terms and Conditions", href: "/terms-and-conditions" },
+  { label: "Responsible Gaming", href: "/responsible-gaming" },
+  { label: "KYC Policy", href: "/kyc-policy" },
+];
 ---
 
 <html lang="en">
@@ -75,6 +83,41 @@ const cliLink = "https://access.gaminglabs.com/Certificate/Index?i=600";
       <slot />
     </main>
     <footer class={css({ border: "1px solid #EDEDED", bgColor: "#FAFAFA" })}>
+      <div class={container({ maxWidth: "1200px", px: "24px" })}>
+        <div
+          class={css({
+            display: "flex",
+            flexDirection: { base: "column", md: "row" },
+            justifyContent: "space-between",
+            alignItems: { base: "center", md: "flex-start" },
+            gap: { base: "24px", md: "48px" },
+            pt: { base: "32px", md: "48px" },
+            pb: { base: "24px", md: "32px" },
+            borderBottom: "1px solid #EDEDED",
+          })}
+        >
+          <a href="/">
+            <img src={logoSvg.src} alt="Gaming Panda Logo" height={40} class={css({ width: "auto", height: "40px" })} />
+          </a>
+          <nav aria-label="Legal" class={css({ textAlign: { base: "center", md: "left" } })}>
+            <p class={css({ textStyle: "16_700_100", color: "#1D1D1D", mb: "16px" })}>Legal</p>
+            <ul class={css({ display: "flex", flexDirection: "column", gap: "14px" })}>
+              {
+                policyLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class={css({ textStyle: "14_500_100", color: "#6D7A7D", _hover: { color: "#F74774" } })}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </div>
       <div
         class:list={[
           container({ maxWidth: "1200px", px: "24px" }),

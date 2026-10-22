@@ -1,0 +1,105 @@
+---
+import { css } from "../../../styled-system/css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NewContactCard from "../../components/NewContactCard.astro";
+import { sectionContainerSx } from "../../styles/common";
+import headingDecorationPng from "../../assets/heading-decoration.png";
+
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+  pagePath: string;
+  // 页面主标题，按政策原文显示；需要控制换行时可改用 slot="heading"
+  heading: string;
+  // 原文标注的更新日期，没有则不显示
+  lastUpdated?: string;
+}
+
+const { title, description, keywords, pagePath, heading, lastUpdated } = Astro.props;
+
+// 政策正文排版：原文是 Word 文档，这里统一控制标题、段落、列表和链接的样式
+const proseSx = css({
+  color: "#333333",
+  fontSize: { base: "15px", md: "16px" },
+  lineHeight: "1.7",
+  overflowWrap: "break-word",
+  "& h2": {
+    fontSize: { base: "20px", md: "24px" },
+    fontWeight: 700,
+    lineHeight: "1.3",
+    color: "#1D1D1D",
+    mt: { base: "32px", md: "40px" },
+    mb: "12px",
+  },
+  "& h3": {
+    fontSize: { base: "18px", md: "20px" },
+    fontWeight: 700,
+    lineHeight: "1.3",
+    color: "#1D1D1D",
+    mt: { base: "28px", md: "32px" },
+    mb: "10px",
+  },
+  "& > :first-child": { mt: 0 },
+  "& p": { mb: "12px" },
+  "& ul, & ol": { pl: "28px", mb: "12px" },
+  "& ul": { listStyleType: "disc" },
+  "& ol": { listStyleType: "decimal" },
+  "& li": { mb: "6px" },
+  "& li > ul, & li > ol": { mt: "6px", mb: 0 },
+  // Word 中 “1)” 样式的编号
+  "& ol.paren": { listStyle: "none", counterReset: "paren" },
+  "& ol.paren > li": { position: "relative", counterIncrement: "paren" },
+  "& ol.paren > li::before": { content: 'counter(paren) ")"', position: "absolute", left: "-28px" },
+  // Word 中 “a.” 样式的编号
+  "& ol.alpha": { listStyleType: "lower-alpha" },
+  "& .indent": { pl: "24px", mb: "6px" },
+  "& a": { color: "#01B6CF", textDecoration: "underline", textUnderlineOffset: "2px" },
+  "& a:hover": { color: "#F74774" },
+  "& strong": { fontWeight: 700 },
+});
+---
+
+<BaseLayout title={title} description={description} keywords={keywords} pagePath={pagePath}>
+  <section
+    id="hero-section"
+    class={css({
+      bg: "linear-gradient(180deg, #E6F8FB 0%, #FFFFFF 100%)",
+      pt: { base: "104px", md: "152px" },
+      pb: { base: "24px", md: "40px" },
+    })}
+  >
+    <div class={css(sectionContainerSx, { px: "24px", maxWidth: "880px", textAlign: "center" })}>
+      <h1
+        class={css({
+          textStyle: { base: "32_800_125", md: "44_500_100" },
+          fontWeight: { md: 800 },
+          color: "#1D1D1D",
+          pt: { base: "10px", md: "16px" },
+          background: "no-repeat center top",
+          backgroundSize: { base: "auto 10px", md: "auto 16px" },
+        })}
+        style={{ backgroundImage: `url(${headingDecorationPng.src})` }}
+      >
+        <slot name="heading">{heading}</slot>
+      </h1>
+      {
+        lastUpdated && (
+          <p class={css({ textStyle: { base: "14_500_142", md: "16_500_100" }, color: "#6D7A7D", mt: { base: "12px", md: "20px" } })}>
+            {lastUpdated}
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <article class={css(sectionContainerSx, { px: "24px", maxWidth: "880px", pb: { base: "40px", md: "64px" } })}>
+    <div class={proseSx}>
+      <slot />
+    </div>
+  </article>
+
+  <section class={css(sectionContainerSx, { py: { base: "24px", lg: "40px" } })} id="contact">
+    <NewContactCard />
+  </section>
+</BaseLayout>

@@ -1,0 +1,115 @@
+---
+export const prerender = true;
+
+import { css } from "../../styled-system/css";
+import PolicyLayout from "./_components/PolicyLayout.astro";
+
+// 原文中两处重复出现的受限国家列表
+const restrictedCountries = [
+  "Austria",
+  "France and its territories",
+  "Germany",
+  "Netherlands and its territories",
+  "Spain",
+  "Union of Comoros",
+  "United Kingdom",
+  "USA and its territories",
+  "All FATF Blacklisted countries,",
+  "any other jurisdictions deemed prohibited by Anjouan Offshore Financial Authority.",
+];
+---
+
+<!--
+  正文来自 “KYC Policy - gaming-panda.com.docx”，须与原文保持一致，请勿改写条款。
+  原文编号：一级为 “1)”，二级为 “a.” 且在同一大项内连续计数（受限国家列表之后继续 c. d. e.）。
+-->
+<PolicyLayout
+  title="KYC Policy | Gaming Panda"
+  description="Know Your Customer (KYC) Policy of 3-102-964765 SRL for gaming-panda.com."
+  keywords="Gaming Panda, KYC policy, know your customer, gaming-panda.com"
+  pagePath="/kyc-policy"
+  heading="KYC Policy of 3-102-964765 SRL."
+  lastUpdated="Last updated: 18 September 2026"
+>
+  <!-- 避免移动端在注册号的连字符处断行 -->
+  <Fragment slot="heading">KYC Policy of <span class={css({ whiteSpace: "nowrap" })}>3-102-964765</span> SRL.</Fragment>
+  <p>
+    The Company adheres to and complies with “Know your customer” principles, which aim to prevent financial crime and money
+    laundering through client identification and due diligence.
+  </p>
+  <p>
+    The Company reserves the right, at any time, to ask for any KYC documentation it deems necessary to determine the identity
+    and location of a user in gaming-panda.com. We reserve the right to restrict the service, payment, or withdrawal until
+    identity is sufficiently determined, or for any other reason in our sole discretion based on the legal framework.
+  </p>
+  <p>
+    We take a risk-based approach and perform strict due diligence checks and ongoing monitoring of all clients, customers, and
+    transactions. As per the money laundering regulations, we utilize three stages of due diligence checks, depending on the
+    risk, transaction, and customer type.
+  </p>
+  <p>
+    <strong>SDD</strong> — simplified due diligence is used in instances of extremely low-risk transactions that do not meet the required
+    thresholds
+  </p>
+  <p>
+    <strong>CDD</strong> — customer due diligence is the standard for due diligence checks, used in most cases for verification and
+    identification
+  </p>
+  <p><strong>EDD</strong> — Enhanced Due Diligence is used for high-risk customers, large transactions or special cases.</p>
+  <p>
+    Separately and in addition to the above, when a user makes an aggregate lifetime total of deposits exceeding EUR 5,000 or
+    requests a withdrawal of any amount inside the <a href="https://gaming-panda.com">gaming-panda.com</a>, or attempts to or
+    completes a transaction that is deemed suspicious, then it is compulsory for them to complete the full KYC process.
+  </p>
+  <p>During this process, the user will have to input some basic details about themselves and then upload</p>
+  <ol class="paren">
+    <li>A copy of Government Issued Photo ID (in some cases front and back depending on the ID document)</li>
+    <li>A selfie of themselves holding the ID doc</li>
+    <li>A bank statement/Utility Bill</li>
+  </ol>
+
+  <h2>Guideline for the “KYC Process”</h2>
+  <ol class="paren">
+    <li>
+      Proof of ID
+      <ol class="alpha">
+        <li>Signature Is there</li>
+        <li>
+          Country is not one of the following Restricted Countries:
+          {restrictedCountries.map((country) => <div class="indent">{country}</div>)}
+        </li>
+        <li>Full Name matches client’s name</li>
+        <li>Document does not expire in the next 3 months</li>
+        <li>Owner is over 18 years of age</li>
+      </ol>
+    </li>
+    <li>
+      Proof of Residence
+      <ol class="alpha">
+        <li>Bank Statement or Utility Bill</li>
+        <li>
+          Country is not one of the following Restricted Countries:
+          {restrictedCountries.map((country) => <div class="indent">{country}</div>)}
+        </li>
+        <li>Full Name matches client’s name and is same as in proof of ID.</li>
+        <li>Date of Issue: In the last 3 months</li>
+      </ol>
+    </li>
+    <li>
+      Selfie with ID
+      <ol class="alpha">
+        <li>Holder is the same as in the ID document above</li>
+        <li>ID document is the same as in “1”. Make sure photo/ID number is the same</li>
+      </ol>
+    </li>
+  </ol>
+
+  <h2>Notes on the “KYC Process”</h2>
+  <ol class="paren">
+    <li>
+      When the KYC process is unsuccessful then the reason is documented and a support ticket is created in the system. The
+      ticket number along with an explanation is communicated back to the user.
+    </li>
+    <li>Once all proper documents are in our possession then the account gets approved.</li>
+  </ol>
+</PolicyLayout>
