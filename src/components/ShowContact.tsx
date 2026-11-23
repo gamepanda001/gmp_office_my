@@ -160,9 +160,9 @@ function ShowContact() {
             Contact@gaming-panda.com
           </a>
         </div>
-        <a href="https://wa.me/84936094170" target="_blank" rel="noopener noreferrer" className={contactItemSx}>
+        <a href="https://wa.me/85256107290" target="_blank" rel="noopener noreferrer" className={contactItemSx}>
           <img src={whatsappIcon.src} alt="Phone icon" width={24} height={24} />
-          <span className={subTitleSx}>+84 936 094 170</span>
+          <span className={subTitleSx}>+852 5610 7290</span>
         </a>
       </div>
     </div>
