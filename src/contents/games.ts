@@ -963,7 +963,9 @@ function generateUniqueSlug(gamesData: any[]): any[] {
         heroImageBg: item.heroImageBg || localGame?.heroImageBg,
         heroImageFg: item.heroImageFg || localGame?.heroImageFg,
         heroImageMobile: item.heroImageMobile || localGame?.heroImageMobile,
-        screenshots: item?.screenshots.split(",") || localGame?.screenshots || [],
+        screenshots: item?.screenshots
+          ? item.screenshots.split(/[,，、;；\n]/).map((s: string) => s.trim()).filter(Boolean)
+          : localGame?.screenshots || [],
         features: item?.features.map((feature: string) => getFeatureLabel(feature as GameFeature)) || [],
         releaseDate: transExcelDateToTimestamp(item.releaseDate),
         shareImage: item.sharepic, // 添加分享图片字段
@@ -980,7 +982,9 @@ function generateUniqueSlug(gamesData: any[]): any[] {
         heroImageBg: item.heroImageBg || localGame?.heroImageBg,
         heroImageFg: item.heroImageFg || localGame?.heroImageFg,
         heroImageMobile: item.heroImageMobile || localGame?.heroImageMobile,
-        screenshots: item?.screenshots.split(",") || localGame?.screenshots || [],
+        screenshots: item?.screenshots
+          ? item.screenshots.split(/[,，、;；\n]/).map((s: string) => s.trim()).filter(Boolean)
+          : localGame?.screenshots || [],
         features: item?.features.map((feature: string) => getFeatureLabel(feature as GameFeature)) || [],
         releaseDate: transExcelDateToTimestamp(item.releaseDate),
         shareImage: item.sharepic, // 添加分享图片字段
